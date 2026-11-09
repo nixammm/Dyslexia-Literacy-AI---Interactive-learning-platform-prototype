@@ -629,6 +629,61 @@
       padding:10px 20px; font-size:0.8125rem; font-weight:600; color:var(--muted);
       border-bottom:2px solid transparent; margin-bottom:-1px; transition:all var(--dur) var(--ease); cursor:pointer; white-space:nowrap;
     }
+    button.teacher-tab { background:none; border-top:0; border-left:0; border-right:0; font-family:inherit; }
+    .tt-panel[hidden] { display:none !important; }
+    .tt-toolbar { display:flex; gap:10px; margin-bottom:16px; flex-wrap:wrap; }
+    .tt-input { border:1px solid var(--line); border-radius:var(--radius); padding:10px 12px; font:inherit; background:var(--surface); color:var(--ink); min-width:220px; width:100%; box-sizing:border-box; }
+    .tt-toolbar .tt-input { width:auto; flex:1; }
+    .tt-split { display:grid; grid-template-columns:1.2fr 1fr; gap:20px; align-items:start; }
+    @media (max-width:900px) { .tt-split { grid-template-columns:1fr; } }
+    .stu-row { display:flex; align-items:center; gap:12px; width:100%; padding:10px 16px; background:none; border:0; border-bottom:1px solid var(--line); font:inherit; color:inherit; text-align:left; cursor:pointer; }
+    .stu-row:hover { background:var(--soft); }
+    .stu-row.sel { background:var(--blue-light); }
+    .stu-row .nm { font-weight:700; flex:1; } .stu-row .dt { color:var(--muted); font-size:0.8125rem; }
+    .stu-row .pct { font-weight:700; width:44px; text-align:right; }
+    .stu-row .progress-bar { width:90px; }
+    .tt-chips { display:flex; flex-wrap:wrap; gap:8px; margin-top:6px; }
+    .tt-chip { border:1px solid var(--line); background:var(--surface); color:var(--ink2); border-radius:999px; padding:6px 12px; font:inherit; font-size:0.8125rem; cursor:pointer; }
+    .tt-chip:hover { border-color:var(--blue); color:var(--blue); }
+    .syl { display:inline-flex; gap:4px; margin:0 10px 10px 0; padding:6px 10px; border-radius:12px; background:var(--soft); align-items:center; }
+    .syl b { background:var(--blue); color:#fff; border-radius:8px; padding:4px 9px; font-weight:700; }
+    .cur-card { background:var(--surface); border:1px solid var(--line); border-radius:var(--radius-lg); margin-bottom:12px; box-shadow:var(--shadow-sm); }
+    .cur-head { display:flex; align-items:center; gap:12px; padding:14px 18px; cursor:pointer; width:100%; background:none; border:0; font:inherit; color:inherit; text-align:left; }
+    .cur-head .ttl { font-weight:700; flex:1; } .cur-head .sub { color:var(--muted); font-size:0.8125rem; font-weight:400; display:block; }
+    .cur-body { padding:4px 18px 18px; border-top:1px solid var(--line); }
+    .rep-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-bottom:20px; }
+    @media (max-width:900px) { .rep-grid { grid-template-columns:1fr; } }
+    .bars { display:flex; align-items:flex-end; gap:12px; height:150px; padding-top:10px; }
+    .bars .col { flex:1; display:flex; flex-direction:column; align-items:center; justify-content:flex-end; height:100%; gap:6px; font-size:0.75rem; color:var(--muted); }
+    .bars .col i { display:block; width:100%; max-width:46px; background:var(--blue); border-radius:8px 8px 0 0; min-height:4px; }
+    .bars .col b { color:var(--ink); font-size:0.8125rem; }
+    .tt-badge { display:inline-block; margin-left:8px; background:#ea580c; color:#fff; border-radius:999px; font-size:0.6875rem; padding:2px 7px; font-weight:700; vertical-align:middle; }
+    .tt-badge[hidden] { display:none; }
+    .thread { margin-bottom:16px; }
+    .thread .msg { padding:12px 14px; border-radius:var(--radius); background:var(--soft); font-size:0.875rem; line-height:1.5; }
+    .thread .msg small { display:block; color:var(--muted); margin-top:4px; font-size:0.75rem; }
+    .thread .msg .who { font-weight:700; font-size:0.75rem; color:var(--ink2); display:block; margin-bottom:2px; }
+    .thread .reply { margin:6px 0 0 20px; padding:10px 12px; border-radius:var(--radius); background:var(--blue-light); font-size:0.875rem; line-height:1.5; }
+    .thread .reply.theirs { background:var(--surface); border:1px solid var(--line); }
+    .thread .reply .who { display:block; color:var(--ink2); }
+    .thread .reply small { display:block; color:var(--muted); margin-top:2px; font-size:0.75rem; }
+    .reply-form { display:flex; gap:8px; margin:8px 0 0 20px; }
+    .reply-form input { flex:1; border:1px solid var(--line); border-radius:var(--radius); padding:8px 10px; font:inherit; background:var(--surface); color:var(--ink); min-width:0; }
+    .lesson-shelf { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:16px; }
+    .shelf-card { background:var(--surface); border:2px solid var(--line); border-radius:var(--radius-lg); padding:16px; display:flex; flex-direction:column; gap:8px; box-shadow:var(--shadow-sm); }
+    .shelf-card.on { border-color:var(--blue); }
+    .shelf-pics { display:flex; gap:6px; }
+    .shelf-pics img { width:56px; height:56px; border-radius:12px; border:1px solid var(--line); }
+    .shelf-title { font-weight:800; font-size:1.0625rem; }
+    .shelf-blurb { color:var(--muted); font-size:0.875rem; flex:1; }
+    .tt-note { color:var(--muted); font-size:0.8125rem; margin:12px 0; }
+    .tt-cta p { color:var(--ink2); margin:6px 0 16px; line-height:1.5; }
+    .tt-textarea { width:100%; border:1px solid var(--line); border-radius:var(--radius); padding:12px; font:inherit; background:var(--surface); color:var(--ink); resize:vertical; margin-top:6px; }
+    .tt-table { width:100%; border-collapse:collapse; font-size:0.9rem; }
+    .tt-table th, .tt-table td { text-align:left; padding:10px 12px; border-bottom:1px solid var(--line); }
+    .tt-table th { color:var(--muted); font-size:0.75rem; text-transform:uppercase; letter-spacing:.04em; }
+    .tt-fb-item { padding:12px 14px; border-radius:var(--radius); background:var(--soft); margin-bottom:10px; font-size:0.875rem; line-height:1.5; }
+    .tt-fb-item small { display:block; color:var(--muted); margin-top:4px; }
     .teacher-tab:hover { color:var(--ink); }
     .teacher-tab.active { color:var(--blue); border-bottom-color:var(--blue); font-weight:700; }
     .teacher-stats { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin-bottom:24px; }
@@ -828,6 +883,7 @@
     .check-tracing-btn { background:var(--blue); box-shadow:0 4px 0 var(--blue-dark); border-radius:var(--radius); }
     .check-tracing-btn:hover { background:var(--blue-hover); }
     .trace-actions { flex-wrap:wrap; }
+    #traceCanvas.off-line { box-shadow:inset 0 0 0 4px #ea580c, 0 0 0 4px rgba(234,88,12,.25); transition:box-shadow .1s; }
     .trace-feedback { min-height:28px; margin-top:12px; text-align:center; font-weight:700; }
     .trace-feedback.good { color:var(--green-dark); }
     .trace-feedback.retry { color:#b45309; }
@@ -853,6 +909,11 @@
     .preview-card { display:grid; grid-template-columns:1fr 240px; gap:20px; background:var(--surface); padding:24px; border-radius:16px; border:1px solid var(--line); }
     @media (max-width:640px) { .preview-card { grid-template-columns:1fr; } }
     html:not([lang="ms"]) .ms-only { display:none; }
+    html[lang="ms"] .en-only { display:none; }
+    /* BM has no picture card on the landing page: the hero text takes the full row */
+    html[lang="ms"] .hero-illustration { display:none; }
+    html[lang="ms"] .landing-hero { grid-template-columns:1fr; }
+    html[lang="ms"] .hero-content { max-width:640px; }
     .lang-switch { display:inline-flex; border:2px solid var(--line); border-radius:999px; padding:2px; background:var(--surface); }
     .lang-switch button { min-width:44px; min-height:36px; padding:4px 12px; border-radius:999px; font-weight:700; font-size:0.875rem; color:var(--ink2); }
     .lang-switch button.active { background:var(--blue); color:#fff; }
@@ -1025,14 +1086,13 @@
         </div>
         <div class="hero-illustration">
           <div class="bed-card">
-            <svg viewBox="0 0 420 220" role="img" aria-labelledby="bed-title">
+            <svg class="en-only" viewBox="0 0 420 220" role="img" aria-labelledby="bed-title">
               <title id="bed-title">The word bed drawn as a bed: the tall line of b is the headboard and the tall line of d is the footboard.</title>
               <text x="210" y="190" text-anchor="middle" font-family="Lexend, Arial, sans-serif" font-weight="700" font-size="150" fill="#0f172a">bed</text>
               <rect x="132" y="90" width="176" height="18" rx="9" fill="#93c5fd"/>
               <rect x="136" y="72" width="48" height="18" rx="9" fill="#fcd34d"/>
             </svg>
-            <p class="bed-caption"><b>b</b> is the head of the bed, <b>d</b> is the foot.</p>
-            <p class="bed-caption ms-only" style="margin-top:-10px;font-size:0.875rem;color:var(--muted)">Perkataan Inggeris "bed" bermaksud katil.</p>
+            <p class="bed-caption en-only"><b>b</b> is the head of the bed, <b>d</b> is the foot.</p>
             <button class="btn light" onclick="speakText(t(content().trick), 0.8)"><svg class="ico"><use href="#i-volume"/></svg> Listen</button>
           </div>
         </div>
@@ -1347,6 +1407,10 @@
                 <p style="color:var(--muted);font-size:0.9375rem" id="home-lesson-blurb" data-no-i18n>Blend and read: cat, bat, hat, map, van.</p>
                 <div class="lesson-meta"><span>About 8 minutes</span><span>3 activities</span></div>
                 <button class="btn lg" onclick="showPage('reading')">Continue lesson <svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></button>
+              </div>
+              <div>
+                <h3 style="font-size:1.15rem;font-weight:800;margin-bottom:14px">Choose a lesson</h3>
+                <div id="lesson-shelf" class="lesson-shelf" data-no-i18n></div>
               </div>
               <div>
                 <h3 style="font-size:1.15rem;font-weight:800;margin-bottom:14px">Practise</h3>
@@ -1857,19 +1921,25 @@
           <div class="teacher-header">
             <div class="teacher-header-left"><h2>Dashboard</h2><p>Overview of your students' progress.</p></div>
             <div class="teacher-controls">
-              <select class="select-control"><option>Class 1A</option><option>Class 1B</option></select>
-              <select class="select-control"><option>This Week</option><option>This Month</option><option>All Time</option></select>
+              <select class="select-control" id="sel-class" aria-label="Class" onchange="renderTeacherTabs()"><option value="1A">Class 1A</option><option value="1B">Class 1B</option></select>
+              <select class="select-control" id="sel-period" aria-label="Period" onchange="renderTeacherTabs()"><option value="week">This Week</option><option value="month">This Month</option><option value="all">All Time</option></select>
             </div>
           </div>
-          <div class="teacher-tabs">
-            <div class="teacher-tab active">Overview</div>
-            <div class="teacher-tab" onclick="this.parentElement.querySelector('.active')?.classList.remove('active');this.classList.add('active')">Students</div>
-            <div class="teacher-tab" onclick="this.parentElement.querySelector('.active')?.classList.remove('active');this.classList.add('active')">Curriculum</div>
-            <div class="teacher-tab" onclick="this.parentElement.querySelector('.active')?.classList.remove('active');this.classList.add('active')">Lesson Builder</div>
-            <div class="teacher-tab" onclick="this.parentElement.querySelector('.active')?.classList.remove('active');this.classList.add('active')">Simplify Notes</div>
-            <div class="teacher-tab" onclick="this.parentElement.querySelector('.active')?.classList.remove('active');this.classList.add('active')">Assignments</div>
-            <div class="teacher-tab" onclick="this.parentElement.querySelector('.active')?.classList.remove('active');this.classList.add('active')">Reports</div>
-            <div class="teacher-tab" onclick="this.parentElement.querySelector('.active')?.classList.remove('active');this.classList.add('active')">Feedback</div>
+          <div class="teacher-tabs" role="tablist">
+            <button type="button" class="teacher-tab active" role="tab" aria-selected="true" data-tab="overview" onclick="teacherTab('overview')">Overview</button>
+            <button type="button" class="teacher-tab" role="tab" aria-selected="false" data-tab="students" onclick="teacherTab('students')">Students</button>
+            <button type="button" class="teacher-tab" role="tab" aria-selected="false" data-tab="curriculum" onclick="teacherTab('curriculum')">Curriculum</button>
+            <button type="button" class="teacher-tab" role="tab" aria-selected="false" data-tab="builder" onclick="teacherTab('builder')">Lesson Builder</button>
+            <button type="button" class="teacher-tab" role="tab" aria-selected="false" data-tab="notes" onclick="teacherTab('notes')">Simplify Notes</button>
+            <button type="button" class="teacher-tab" role="tab" aria-selected="false" data-tab="assign" onclick="teacherTab('assign')">Assignments</button>
+            <button type="button" class="teacher-tab" role="tab" aria-selected="false" data-tab="reports" onclick="teacherTab('reports')">Reports</button>
+            <button type="button" class="teacher-tab" role="tab" aria-selected="false" data-tab="feedback" onclick="teacherTab('feedback')">Feedback<span class="tt-badge" id="fb-badge" hidden></span></button>
+          </div>
+          <div id="tt-overview" class="tt-panel">
+          <div id="teacher-reply-notice" class="next-step" style="margin-bottom:20px" hidden>
+            <div class="next-step-icon"><svg class="ico" aria-hidden="true"><use href="#i-notes"/></svg></div>
+            <div class="next-step-text"><div class="label">New reply from a parent</div><p id="teacher-reply-summary"></p></div>
+            <button class="btn sm" onclick="teacherTab('feedback')">Read reply</button>
           </div>
           <!-- RECENT PUBLICATIONS (shown after teacher publishes) -->
           <div id="teacher-recent-publications" class="next-step" style="margin-bottom:20px" hidden>
@@ -1878,9 +1948,9 @@
             <button class="btn sm" onclick="showPage('notes')">View notes</button>
           </div>
           <div class="teacher-stats">
-            <div class="teacher-stat-card"><div class="teacher-stat-icon" style="background:var(--blue-light)">👥</div><div class="teacher-stat-value">18</div><div class="teacher-stat-label">Total Students</div></div>
-            <div class="teacher-stat-card"><div class="teacher-stat-icon" style="background:var(--green-light)">📚</div><div class="teacher-stat-value">24</div><div class="teacher-stat-label">Lessons</div></div>
-            <div class="teacher-stat-card"><div class="teacher-stat-icon" style="background:var(--orange-light)">🎯</div><div class="teacher-stat-value">72%</div><div class="teacher-stat-label">Accuracy</div></div>
+            <div class="teacher-stat-card"><div class="teacher-stat-icon" style="background:var(--blue-light)">👥</div><div class="teacher-stat-value" id="ov-students">18</div><div class="teacher-stat-label">Total Students</div></div>
+            <div class="teacher-stat-card"><div class="teacher-stat-icon" style="background:var(--green-light)">📚</div><div class="teacher-stat-value" id="ov-lessons">24</div><div class="teacher-stat-label">Lessons</div></div>
+            <div class="teacher-stat-card"><div class="teacher-stat-icon" style="background:var(--orange-light)">🎯</div><div class="teacher-stat-value" id="ov-acc">72%</div><div class="teacher-stat-label">Accuracy</div></div>
             <div class="teacher-stat-card"><div class="teacher-stat-icon" style="background:var(--yellow-light)">⭐</div><div class="teacher-stat-value">5</div><div class="teacher-stat-label">Stars</div></div>
           </div>
           <div class="card" style="margin-bottom:24px">
@@ -1901,6 +1971,75 @@
               <h3>Students Need Support</h3>
               <div class="student-row"><div class="avatar sm">N</div><div class="student-info"><div class="student-name">Nina</div><div class="student-detail">Letter recognition</div></div><span class="badge orange">Needs Review</span></div>
               <div class="student-row"><div class="avatar sm">D</div><div class="student-info"><div class="student-name">Danish</div><div class="student-detail">Reading words</div></div><span class="badge coral">Struggling</span></div>
+            </div>
+          </div>
+          </div>
+          <div id="tt-students" class="tt-panel" hidden>
+            <div class="tt-toolbar">
+              <input type="search" id="stu-search" class="tt-input" placeholder="Search a student" aria-label="Search a student" oninput="renderStudents()">
+              <select id="stu-filter" class="select-control" aria-label="Show" onchange="renderStudents()">
+                <option value="all">All students</option><option value="support">Need support</option><option value="track">On track</option>
+              </select>
+            </div>
+            <div class="tt-split">
+              <div class="card" style="padding:8px 0"><div id="stu-table"></div></div>
+              <div class="card" id="stu-detail"></div>
+            </div>
+          </div>
+          <div id="tt-curriculum" class="tt-panel" hidden>
+            <p class="tt-note" style="margin-top:0">Lessons for this term. Open one to see its words, or assign it to the class.</p>
+            <div id="cur-list"></div>
+          </div>
+          <div id="tt-builder" class="tt-panel" hidden>
+            <div class="tt-split">
+              <div class="card tt-cta">
+                <h3>Build a lesson</h3>
+                <label class="setting-label" for="lb-title">Lesson title</label>
+                <input type="text" id="lb-title" class="tt-input" placeholder="e.g. Words with sh" oninput="renderBuilderPreview()">
+                <label class="setting-label" for="lb-words" style="margin-top:12px;display:block">Words (separate with commas)</label>
+                <textarea id="lb-words" class="tt-textarea" rows="3" placeholder="e.g. ship, shop, fish, dish" oninput="renderBuilderPreview()"></textarea>
+                <label class="setting-label" for="lb-level" style="margin-top:12px;display:block">Level</label>
+                <select id="lb-level" class="select-control" style="width:100%"><option value="1">Foundational Level 1</option><option value="2">Foundational Level 2</option><option value="3">Foundational Level 3</option></select>
+                <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:16px">
+                  <button type="button" class="btn" onclick="saveCustomLesson()">Add to curriculum</button>
+                  <button type="button" class="btn outline" onclick="showPage('notes'); startNewNote()">Or start from a worksheet photo</button>
+                </div>
+                <p id="lb-status" class="tt-note" role="status" aria-live="polite"></p>
+              </div>
+              <div class="card">
+                <h3 style="font-size:1rem;font-weight:700;margin-bottom:6px">What the child will see</h3>
+                <p class="tt-note" style="margin-top:0" id="lb-hint"></p>
+                <div id="lb-preview"></div>
+              </div>
+            </div>
+          </div>
+          <div id="tt-assign" class="tt-panel" hidden>
+            <div class="card" style="margin-bottom:20px">
+              <h3 style="font-size:1rem;font-weight:700;margin-bottom:12px">Lessons assigned to the class</h3>
+              <div id="as-lessons"></div>
+            </div>
+            <div class="student-list-card">
+              <h3>Notes you have sent</h3>
+              <div id="tt-assign-list" class="notes-list"></div>
+            </div>
+          </div>
+          <div id="tt-reports" class="tt-panel" hidden>
+            <div id="rep-body"></div>
+          </div>
+          <div id="tt-feedback" class="tt-panel" hidden>
+            <div class="tt-split">
+              <div class="card tt-cta">
+                <h3>Write to a parent</h3>
+                <label class="setting-label" for="fb-student">Student</label>
+                <select id="fb-student" class="select-control" style="width:100%"></select>
+                <div class="setting-label" style="margin-top:12px">Quick messages</div>
+                <div id="fb-templates" class="tt-chips"></div>
+                <label class="setting-label" for="tt-fb-text" style="margin-top:12px;display:block">Message</label>
+                <textarea id="tt-fb-text" class="tt-textarea" rows="4"></textarea>
+                <div style="display:flex;gap:10px;align-items:center;margin-top:12px"><button type="button" class="btn" onclick="sendTeacherFeedback()">Send to parent</button><span id="tt-fb-status" role="status" aria-live="polite" class="tt-note" style="margin:0"></span></div>
+                <p class="tt-note">Aisyah's parent sees the message under "From the teacher".</p>
+              </div>
+              <div class="card"><h3 style="font-size:1rem;font-weight:700;margin-bottom:12px">Sent messages</h3><div id="tt-fb-list"></div></div>
             </div>
           </div>
         </div>
@@ -1939,10 +2078,7 @@
               <div class="parent-progress-row"><span class="parent-progress-label">Tracing</span><div class="progress-bar"><div class="progress-fill orange" style="width:70%"></div></div><span class="skill-percent">70%</span></div>
             </div>
             <div class="parent-sidebar">
-              <div class="feedback-card">
-                <h3>From the teacher</h3>
-                <div class="feedback-message"><p>Aisyah is doing well! She is improving in reading short words. Let's keep practicing b and d.</p><div class="feedback-date">2 days ago</div></div>
-              </div>
+              <div class="feedback-card" id="parent-fb-card"></div>
               <div class="feedback-card" id="parent-notes-card">
                 <h3 id="parent-notes-title" data-no-i18n>Notes for Aisyah</h3>
                 <div id="parent-notes-list" class="notes-list compact"></div>
@@ -1988,10 +2124,7 @@
       'See what your child practised and what to try at home.': 'Lihat apa yang anak sudah belajar dan aktiviti untuk dibuat di rumah.',
       'Get started': 'Mula sekarang',
       'Already have an account?': 'Sudah ada akaun?',
-      'is the head of the bed,': 'di kepala katil,',
-      'is the foot.': 'di kaki katil.',
       'Listen': 'Dengar',
-      'b is the head of the bed. d is the foot.': 'Ingat katil. Huruf b di kepala katil, huruf d di kaki katil.',
       // Auth
       'Welcome back': 'Selamat kembali',
       'Reading practice made for children with dyslexia.': 'Latihan membaca yang dibina untuk kanak-kanak disleksia.',
@@ -2137,14 +2270,17 @@
       'Thumb trick:': 'Petua ibu jari:',
       'make two thumbs-up fists. The left hand makes a': 'genggam kedua-dua tangan dan angkat ibu jari. Tangan kiri membentuk huruf',
       ', the right hand makes a': ', tangan kanan membentuk huruf',
-      ', like a bed.': ', macam sebuah katil.',
+      ', like a bed.': '. Dalam abjad, b datang sebelum d, sama seperti kiri sebelum kanan.',
       'Letter': 'Huruf',
       'b or d? A memory trick video': 'Video cara mudah ingat b atau d',
-      'Make a "bed" with your hands: the left hand makes a': 'Bentukkan "katil" dengan tangan: tangan kiri membentuk huruf',
+      'Make a "bed" with your hands: the left hand makes a': 'Genggam kedua-dua tangan dan angkat ibu jari: tangan kiri membentuk huruf',
       'and the right hand makes a': 'dan tangan kanan membentuk huruf',
       'Trace over the dotted letter first.': 'Surih atas garis putus-putus dahulu.',
       'Try to go over the whole letter.': 'Cuba surih seluruh huruf.',
       'Try to stay on the dotted line.': 'Cuba ikut garis putus-putus.',
+      'Oops, that is outside the letter. Move back to the dotted line.': 'Alamak, terkeluar daripada huruf. Kembali ke garis putus-putus.',
+      'Back to the dotted line.': 'Kembali ke garis putus-putus.',
+      'Good, you are back on the line.': 'Bagus, kamu sudah kembali ke garisan.',
       'Good try! {tip} Press Clear to try again.': 'Bagus, cuba lagi! {tip} Tekan Padam untuk mula semula.',
       'Good try! {tip}': 'Bagus, cuba lagi! {tip}',
       'Well done! That is {l}. You earned 2 stars.': 'Syabas! Itu huruf {l}. Kamu dapat 2 bintang.',
@@ -2282,7 +2418,61 @@
       'Text size changed': 'Saiz huruf ditukar',
       'Saved': 'Disimpan',
       'Settings reset': 'Tetapan dikembalikan kepada asal',
+      'Choose a lesson': 'Pilih pelajaran', 'Start this lesson': 'Mulakan pelajaran ini',
       // Teacher dashboard
+      'You': 'Anda', 'Reply': 'Balas', 'Write a reply': 'Tulis balasan', 'Parent of {name}': 'Ibu bapa {name}',
+      'New reply from a parent': 'Balasan baharu daripada ibu bapa', 'Read reply': 'Baca balasan',
+      '{n} new reply from parents. Latest: "{text}"': '{n} balasan baharu daripada ibu bapa. Terkini: "{text}"',
+      'Search a student': 'Cari murid', 'All students': 'Semua murid', 'Need support': 'Perlu sokongan', 'On track': 'Baik', 'Needs review': 'Perlu semakan', 'Struggling': 'Sukar mengikut',
+      'No students match.': 'Tiada murid sepadan.', '{n} lessons': '{n} pelajaran',
+      'Read {n} words in "Short a words"': 'Membaca {n} perkataan dalam "Perkataan a pendek"', 'Traced b and d: {n} tries': 'Menyurih b dan d: {n} percubaan', 'Practised {n} minutes yesterday': 'Berlatih {n} minit semalam',
+      'Days in a row': 'Hari berturut-turut', 'Letters to practise': 'Huruf untuk dilatih', 'b and d mixed up {a} times. p and q mixed up {b} times.': 'b dan d keliru {a} kali. p dan g keliru {b} kali.', 'Recent activity': 'Aktiviti terkini',
+      'Write to parent': 'Tulis kepada ibu bapa', 'Send a practice note': 'Hantar nota latihan',
+      'Lessons for this term. Open one to see its words, or assign it to the class.': 'Pelajaran untuk penggal ini. Buka satu untuk lihat perkataannya, atau tugaskan kepada kelas.',
+      'Letter sounds: a, e, i, o, u': 'Bunyi huruf: a, e, i, o, u', 'Short a words': 'Suku kata mudah', 'Trace b and d': 'Surih b dan d', 'Short e words': 'Di dalam rumah', 'Blends: bl, br, cl': 'Suku kata tertutup: an, ar, ak', 'Short sentences': 'Ayat pendek',
+      'Done': 'Selesai', 'Coming up': 'Akan datang', 'This week': 'Minggu ini', 'Your lesson': 'Pelajaran anda', 'Assigned': 'Ditugaskan', 'Words': 'Perkataan', 'Open lesson': 'Buka pelajaran',
+      'Remove assignment': 'Batalkan tugasan', 'Assign to {cls}': 'Tugaskan kepada {cls}', 'Class 1A': 'Kelas 1A', 'Class 1B': 'Kelas 1B', 'About {n} minutes': 'Kira-kira {n} minit',
+      'Build a lesson': 'Bina pelajaran', 'Lesson title': 'Tajuk pelajaran', 'Words (separate with commas)': 'Perkataan (asingkan dengan koma)', 'Level': 'Tahap',
+      'Foundational Level 1': 'Asas Tahap 1', 'Foundational Level 2': 'Asas Tahap 2', 'Foundational Level 3': 'Asas Tahap 3',
+      'Add to curriculum': 'Tambah ke kurikulum', 'Or start from a worksheet photo': 'Atau mula daripada gambar lembaran kerja', 'What the child will see': 'Apa yang murid akan lihat',
+      'Each word is split into syllables (suku kata).': 'Setiap perkataan dipecahkan kepada suku kata.', 'Each word is shown with its letters, to tap and hear.': 'Setiap perkataan dipaparkan dengan hurufnya, untuk diketik dan didengar.',
+      'Type some words to see the preview.': 'Taip beberapa perkataan untuk lihat pratonton.', 'Add a title and at least two words.': 'Tambah tajuk dan sekurang-kurangnya dua perkataan.', 'Added to the curriculum.': 'Ditambah ke kurikulum.',
+      'Lessons assigned to the class': 'Pelajaran yang ditugaskan kepada kelas', 'Lesson': 'Pelajaran', 'Due': 'Tarikh akhir', 'Done by': 'Siap oleh',
+      'No lessons assigned yet. Open Curriculum and choose Assign.': 'Belum ada pelajaran ditugaskan. Buka Kurikulum dan pilih Tugaskan.',
+      'Class report': 'Laporan kelas', 'Download CSV': 'Muat turun CSV', 'Lessons per student': 'Pelajaran setiap murid', 'Average accuracy': 'Purata ketepatan',
+      'Students practising each day': 'Murid berlatih setiap hari', 'Class average by skill': 'Purata kelas mengikut kemahiran',
+      'Mon': 'Isn', 'Tue': 'Sel', 'Wed': 'Rab', 'Thu': 'Kha', 'Fri': 'Jum', 'Top Students': 'Murid cemerlang', 'Top students': 'Murid cemerlang', 'Everyone is on track.': 'Semua murid baik.',
+      'Student': 'Murid', 'Quick messages': 'Mesej pantas', 'Send to parent': 'Hantar kepada ibu bapa',
+      "Aisyah's parent sees the message under \"From the teacher\".": 'Ibu bapa Aisyah melihat mesej ini di bawah "Daripada cikgu".',
+      '{name} read well today. Well done!': '{name} membaca dengan baik hari ini. Syabas!', 'Please practise b and d with {name} for 10 minutes at home.': 'Tolong latih b dan d bersama {name} selama 10 minit di rumah.',
+      '{name} found today\'s lesson hard. Could we talk this week?': '{name} berasa pelajaran hari ini sukar. Boleh kita berbual minggu ini?', 'Thank you for reading together at home. It is making a difference.': 'Terima kasih kerana membaca bersama di rumah. Ia memberi kesan yang besar.',
+      'Sent to the parent of {name}.': 'Dihantar kepada ibu bapa {name}.',
+      'All students in Class 1A': 'Semua murid Kelas 1A',
+      'Sample class for the prototype.': 'Kelas contoh untuk prototaip.',
+      'Lessons this term': 'Pelajaran penggal ini',
+      'This week': 'Minggu ini', 'Coming up': 'Akan datang',
+      'Open lesson': 'Buka pelajaran', 'Open tracing': 'Buka surih huruf',
+      'Short e words': 'Di dalam rumah', 'Next week': 'Minggu depan',
+      'Blends: bl, br, cl': 'Gabungan: bl, br, cl', 'In two weeks': 'Dalam dua minggu',
+      'Letters that are often mixed up.': 'Huruf yang sering keliru.',
+      'Build a lesson from a worksheet': 'Bina pelajaran daripada lembaran kerja',
+      'Take a photo of a worksheet or class note. The app reads it, simplifies it and makes word cards in seven steps.': 'Ambil gambar lembaran kerja atau nota kelas. Aplikasi membacanya, memudahkannya dan membuat kad perkataan dalam tujuh langkah.',
+      'Start a new note': 'Mulakan nota baharu',
+      'Notes you have sent': 'Nota yang telah dihantar',
+      'No notes sent yet. Use Simplify Notes to send the first one.': 'Belum ada nota dihantar. Guna Permudah nota untuk menghantar yang pertama.',
+      'Weekly class report': 'Laporan kelas mingguan',
+      'Student': 'Murid', 'Words read': 'Perkataan dibaca',
+      'Sample figures for the prototype.': 'Angka contoh untuk prototaip.',
+      'Print or save as PDF': 'Cetak atau simpan sebagai PDF',
+      'Write to a parent': 'Tulis kepada ibu bapa',
+      'Your message appears under "From the teacher" on the parent\'s page.': 'Mesej anda muncul di bawah "Daripada cikgu" pada halaman ibu bapa.',
+      'Message': 'Mesej',
+      'e.g. Aisyah read all five words today. Please practise b and d at home.': 'cth. Aisyah membaca kelima-lima perkataan hari ini. Tolong latih b dan d di rumah.',
+      "Send to Aisyah's parent": 'Hantar kepada ibu bapa Aisyah',
+      'Sent messages': 'Mesej dihantar',
+      'No messages sent yet.': 'Belum ada mesej dihantar.',
+      'Write a message first.': 'Tulis mesej dahulu.',
+      'Sent to the parent.': 'Dihantar kepada ibu bapa.',
       'Dashboard': 'Papan pemuka',
       "Overview of your students' progress.": 'Ringkasan kemajuan murid anda.',
       'This Week': 'Minggu ini', 'This Month': 'Bulan ini', 'All Time': 'Semua',
@@ -2353,6 +2543,15 @@
             { word: 'map', letters: ['m','a','p'], sentence: 'We look at the map.', picto: 'map' },
             { word: 'van', letters: ['v','a','n'], sentence: 'We ride in the van.', picto: 'van' },
           ] },
+        more: [{ id: 'e', title: 'Short e words', blurb: 'Blend and read: bed, pen, hen, net, tent.',
+          story: 'I sleep in my bed. I write with a pen. The hen is in the net. We sleep in the tent.',
+          words: [
+            { word: 'bed', letters: ['b','e','d'], sentence: 'I sleep in my bed.', picto: 'bed' },
+            { word: 'pen', letters: ['p','e','n'], sentence: 'I write with a pen.', picto: 'pen' },
+            { word: 'hen', letters: ['h','e','n'], sentence: 'The hen sat on a nest.', picto: 'hen' },
+            { word: 'net', letters: ['n','e','t'], sentence: 'The fish is in the net.', picto: 'net' },
+            { word: 'tent', letters: ['t','e','n','t'], sentence: 'We sleep in the tent.', picto: 'tent' },
+          ] }],
         tracing: [
           { letter: 'b', sound: '/b/', say: 'buh', example: '🛏️', word: 'bed' },
           { letter: 'd', sound: '/d/', say: 'duh', example: '🐶', word: 'dog' },
@@ -2381,6 +2580,15 @@
             { word: 'peta', letters: ['pe','ta'], sentence: 'Kami lihat peta.', picto: 'map', pictoQuery: 'map' },
             { word: 'batu', letters: ['ba','tu'], sentence: 'Batu itu besar.', picto: 'stone', pictoQuery: 'stone' },
           ] },
+        more: [{ id: 'e', title: 'Di dalam rumah', blurb: 'Baca perkataan di dalam rumah: meja, pintu, pensel, katil, tikar.',
+          story: 'Adik ada meja. Ibu kemas katil. Ayah buka pintu. Pensel itu di atas meja. Kami duduk di atas tikar.',
+          words: [
+            { word: 'meja', letters: ['me','ja'], sentence: 'Adik ada meja.', picto: 'table', pictoQuery: 'table' },
+            { word: 'pintu', letters: ['pin','tu'], sentence: 'Ayah buka pintu.', picto: 'door', pictoQuery: 'door' },
+            { word: 'pensel', letters: ['pen','sel'], sentence: 'Pensel itu di atas meja.', picto: 'pencil', pictoQuery: 'pencil' },
+            { word: 'katil', letters: ['ka','til'], sentence: 'Ibu kemas katil.', picto: 'bed', pictoQuery: 'bed' },
+            { word: 'tikar', letters: ['ti','kar'], sentence: 'Kami duduk di atas tikar.', picto: 'mat', pictoQuery: 'mat' },
+          ] }],
         // g replaces q: q is rare in Malay words, and g and q are often mixed up too
         tracing: [
           { letter: 'b', sound: '/b/', say: 'ba', example: '⚽', word: 'bola' },
@@ -2398,7 +2606,7 @@
             { word: 'hitam', letters: ['hi','tam'], sentence: 'Kucing itu berwarna hitam.', picto: 'black', pictoQuery: 'black', meaning: 'Warna paling gelap, macam langit malam.', sounds: 'hi - tam' },
             { word: 'lembut', letters: ['lem','but'], sentence: 'Tikar itu lembut.', picto: 'soft', pictoQuery: 'soft', meaning: 'Tidak keras dan selesa disentuh, macam bantal.', sounds: 'lem - but' },
           ] },
-        trick: 'b is the head of the bed. d is the foot.',
+        trick: 'Huruf b: batang dulu, baru bulat. Huruf d: duit dulu, baru batang.',
       },
     };
     function content() { return CONTENT[LANG] || CONTENT.en; }
@@ -2461,7 +2669,7 @@
       // Notes: each role sees them where it already looks
       if (name === 'dashboard') renderChildHome();
       if (name === 'parent') renderParent();
-      if (name === 'teacher') renderTeacherDash();
+      if (name === 'teacher') { renderTeacherDash(); teacherTab('overview'); }
       if (name === 'notes') showNotesLibrary();
     }
 
@@ -2628,7 +2836,26 @@
 
     // ─── Reading Practice ───
     // One target sound per lesson (short a). Each sentence matches its picture.
-    function dailyLesson() { return content().daily; }
+    let lessonSetId = 'a';
+    try { lessonSetId = localStorage.getItem('dla-lessonset') || 'a'; } catch (e) {}
+    function lessonSets() { const c = content(); return [Object.assign({ id: 'a' }, c.daily)].concat(c.more || []); }
+    function dailyLesson() { const l = lessonSets(); return l.find(x => x.id === lessonSetId) || l[0]; }
+    function chooseLessonSet(id, go) {
+      lessonSetId = id; try { localStorage.setItem('dla-lessonset', id); } catch (e) {}
+      document.getElementById('home-lesson-title').textContent = dailyLesson().title;
+      document.getElementById('home-lesson-blurb').textContent = dailyLesson().blurb;
+      renderLessonShelf();
+      if (go) { showPage('reading'); } else { loadLesson(null); }
+    }
+    function renderLessonShelf() {
+      const box = document.getElementById('lesson-shelf'); if (!box) return;
+      box.innerHTML = lessonSets().map(l => {
+        const on = l.id === dailyLesson().id;
+        return `<div class="shelf-card${on ? ' on' : ''}"><div class="shelf-pics">${l.words.slice(0, 4).map(w => BUILTIN_PICTOS[pictoKey(w)] ? `<img src="${BUILTIN_PICTOS[pictoKey(w)]}" alt="">` : '').join('')}</div>
+          <div class="shelf-title">${escapeHtml(l.title)}</div><div class="shelf-blurb">${escapeHtml(l.blurb)}</div>
+          <button type="button" class="btn sm${on ? '' : ' outline'}" onclick="chooseLessonSet('${l.id}', true)">${t(on ? 'Continue lesson' : 'Start this lesson')}</button></div>`;
+      }).join('');
+    }
     let words = dailyLesson().words;
     let currentNote = null;
 
@@ -2645,7 +2872,7 @@
       document.getElementById('act-trace').hidden = !!note;
       updateReading();
     }
-    const letterSounds = { a:'a, as in apple', b:'buh', c:'kuh', d:'duh', f:'fff', h:'huh', m:'mmm', n:'nnn', o:'o, as in on', p:'puh', s:'sss', t:'tuh', v:'vvv', bl:'bl', ck:'kuh' };
+    const letterSounds = { e:'e, as in egg', a:'a, as in apple', b:'buh', c:'kuh', d:'duh', f:'fff', h:'huh', m:'mmm', n:'nnn', o:'o, as in on', p:'puh', s:'sss', t:'tuh', v:'vvv', bl:'bl', ck:'kuh' };
     let rIdx = 0;
     let readingMode = 'listen';
 
@@ -2731,6 +2958,14 @@
 
     // Pictures drawn into the app for the lesson words: they work with no internet
     const BUILTIN_PICTOS = {
+      bed: 'data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20200%20200%22%3E%3Crect%20width%3D%22200%22%20height%3D%22200%22%20rx%3D%2224%22%20fill%3D%22%23ffffff%22%2F%3E%3Crect%20x%3D%2226%22%20y%3D%2296%22%20width%3D%22148%22%20height%3D%2246%22%20rx%3D%228%22%20fill%3D%22%2393c5fd%22%20stroke%3D%22%231f2937%22%20stroke-width%3D%226%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%3Crect%20x%3D%2226%22%20y%3D%2270%22%20width%3D%2218%22%20height%3D%2296%22%20rx%3D%226%22%20fill%3D%22%23b45309%22%20stroke%3D%22%231f2937%22%20stroke-width%3D%226%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%3Crect%20x%3D%22156%22%20y%3D%2296%22%20width%3D%2218%22%20height%3D%2270%22%20rx%3D%226%22%20fill%3D%22%23b45309%22%20stroke%3D%22%231f2937%22%20stroke-width%3D%226%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%3Crect%20x%3D%2252%22%20y%3D%2276%22%20width%3D%2244%22%20height%3D%2222%22%20rx%3D%2210%22%20fill%3D%22%23ffffff%22%20stroke%3D%22%231f2937%22%20stroke-width%3D%226%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%3Cpath%20d%3D%22M104%2096%20h50%20v46%20h-50%20z%22%20fill%3D%22%2360a5fa%22%20stroke%3D%22%231f2937%22%20stroke-width%3D%226%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E',
+      pen: 'data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20200%20200%22%3E%3Crect%20width%3D%22200%22%20height%3D%22200%22%20rx%3D%2224%22%20fill%3D%22%23ffffff%22%2F%3E%3Cpath%20d%3D%22M48%20156%20L66%20120%20L146%2040%20a14%2014%200%200%201%2020%2020%20L86%20140%20Z%22%20fill%3D%22%233b82f6%22%20stroke%3D%22%231f2937%22%20stroke-width%3D%226%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%3Cpath%20d%3D%22M146%2040%20l20%2020%22%20stroke%3D%22%231f2937%22%20stroke-width%3D%226%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20fill%3D%22none%22%2F%3E%3Cpath%20d%3D%22M48%20156%20L66%20120%20L86%20140%20Z%22%20fill%3D%22%23fde68a%22%20stroke%3D%22%231f2937%22%20stroke-width%3D%226%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%3Cpath%20d%3D%22M48%20156%20l6%20-12%22%20stroke%3D%22%231f2937%22%20stroke-width%3D%226%22%20stroke-linecap%3D%22round%22%2F%3E%3Cpath%20d%3D%22M104%20122%20L124%20102%22%20stroke%3D%22%231f2937%22%20stroke-width%3D%224%22%20stroke-linecap%3D%22round%22%2F%3E%3C%2Fsvg%3E',
+      hen: 'data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20200%20200%22%3E%3Crect%20width%3D%22200%22%20height%3D%22200%22%20rx%3D%2224%22%20fill%3D%22%23ffffff%22%2F%3E%3Cellipse%20cx%3D%2296%22%20cy%3D%22124%22%20rx%3D%2256%22%20ry%3D%2242%22%20fill%3D%22%23fbbf24%22%20stroke%3D%22%231f2937%22%20stroke-width%3D%226%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%3Ccircle%20cx%3D%22142%22%20cy%3D%2274%22%20r%3D%2226%22%20fill%3D%22%23fbbf24%22%20stroke%3D%22%231f2937%22%20stroke-width%3D%226%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%3Cpath%20d%3D%22M134%2050%20q8%20-22%2018%20-2%20q10%20-18%2012%206%22%20fill%3D%22%23ef4444%22%20stroke%3D%22%231f2937%22%20stroke-width%3D%226%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%3Cpath%20d%3D%22M164%2078%20l22%206%20l-22%208%20z%22%20fill%3D%22%23f97316%22%20stroke%3D%22%231f2937%22%20stroke-width%3D%226%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%3Ccircle%20cx%3D%22146%22%20cy%3D%2270%22%20r%3D%224%22%20fill%3D%22%231f2937%22%2F%3E%3Cpath%20d%3D%22M142%2098%20q-4%2014%206%2020%22%20fill%3D%22%23ef4444%22%20stroke%3D%22%231f2937%22%20stroke-width%3D%226%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%3Cpath%20d%3D%22M60%20128%20q18%2018%2040%204%22%20fill%3D%22none%22%20stroke%3D%22%23b45309%22%20stroke-width%3D%225%22%20stroke-linecap%3D%22round%22%2F%3E%3Cpath%20d%3D%22M84%20164%20v18%20M110%20164%20v18%22%20stroke%3D%22%231f2937%22%20stroke-width%3D%226%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20fill%3D%22none%22%2F%3E%3C%2Fsvg%3E',
+      net: 'data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20200%20200%22%3E%3Crect%20width%3D%22200%22%20height%3D%22200%22%20rx%3D%2224%22%20fill%3D%22%23ffffff%22%2F%3E%3Cpath%20d%3D%22M40%2070%20h120%20q0%2070%20-60%2080%20q-60%20-10%20-60%20-80%20z%22%20fill%3D%22%23d1fae5%22%20stroke%3D%22%231f2937%22%20stroke-width%3D%226%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%3Cpath%20d%3D%22M60%2070%20q4%2050%2040%2080%20M100%2070%20v80%20M140%2070%20q-4%2050%20-40%2080%20M44%20100%20h112%20M56%20128%20h88%22%20fill%3D%22none%22%20stroke%3D%22%231f2937%22%20stroke-width%3D%223.5%22%20stroke-linecap%3D%22round%22%2F%3E%3Cpath%20d%3D%22M100%20150%20L84%20188%20M100%20150%20L116%20188%22%20fill%3D%22none%22%20stroke%3D%22%23b45309%22%20stroke-width%3D%2210%22%20stroke-linecap%3D%22round%22%2F%3E%3C%2Fsvg%3E',
+      tent: 'data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20200%20200%22%3E%3Crect%20width%3D%22200%22%20height%3D%22200%22%20rx%3D%2224%22%20fill%3D%22%23ffffff%22%2F%3E%3Cpath%20d%3D%22M100%2038%20L172%20160%20H28%20Z%22%20fill%3D%22%23f59e0b%22%20stroke%3D%22%231f2937%22%20stroke-width%3D%226%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%3Cpath%20d%3D%22M100%2038%20L124%20160%20H76%20Z%22%20fill%3D%22%23fde68a%22%20stroke%3D%22%231f2937%22%20stroke-width%3D%226%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%3Cpath%20d%3D%22M100%20100%20L124%20160%20H76%20Z%22%20fill%3D%22%231f2937%22%20stroke%3D%22%231f2937%22%20stroke-width%3D%226%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%3Cpath%20d%3D%22M20%20164%20h160%22%20fill%3D%22none%22%20stroke%3D%22%231f2937%22%20stroke-width%3D%226%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%3Cpath%20d%3D%22M100%2038%20V24%22%20stroke%3D%22%231f2937%22%20stroke-width%3D%226%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20fill%3D%22none%22%2F%3E%3Cpath%20d%3D%22M100%2024%20l16%206%20l-16%206%20z%22%20fill%3D%22%23ef4444%22%20stroke%3D%22%231f2937%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E',
+      table: 'data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20200%20200%22%3E%3Crect%20width%3D%22200%22%20height%3D%22200%22%20rx%3D%2224%22%20fill%3D%22%23ffffff%22%2F%3E%3Crect%20x%3D%2228%22%20y%3D%2270%22%20width%3D%22144%22%20height%3D%2220%22%20rx%3D%226%22%20fill%3D%22%23d97706%22%20stroke%3D%22%231f2937%22%20stroke-width%3D%226%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%3Cpath%20d%3D%22M44%2090%20v70%20M156%2090%20v70%22%20stroke%3D%22%231f2937%22%20stroke-width%3D%226%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20fill%3D%22none%22%2F%3E%3Crect%20x%3D%2280%22%20y%3D%2252%22%20width%3D%2214%22%20height%3D%2218%22%20rx%3D%223%22%20fill%3D%22%2360a5fa%22%20stroke%3D%22%231f2937%22%20stroke-width%3D%226%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%3Cpath%20d%3D%22M124%2070%20v-26%20l16%206%20v20%22%20fill%3D%22%23fde68a%22%20stroke%3D%22%231f2937%22%20stroke-width%3D%226%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E',
+      door: 'data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20200%20200%22%3E%3Crect%20width%3D%22200%22%20height%3D%22200%22%20rx%3D%2224%22%20fill%3D%22%23ffffff%22%2F%3E%3Crect%20x%3D%2254%22%20y%3D%2226%22%20width%3D%2292%22%20height%3D%22148%22%20rx%3D%228%22%20fill%3D%22%23b45309%22%20stroke%3D%22%231f2937%22%20stroke-width%3D%226%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%3Crect%20x%3D%2270%22%20y%3D%2244%22%20width%3D%2260%22%20height%3D%2240%22%20rx%3D%224%22%20fill%3D%22%23fcd34d%22%20stroke%3D%22%231f2937%22%20stroke-width%3D%226%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%3Crect%20x%3D%2270%22%20y%3D%22100%22%20width%3D%2260%22%20height%3D%2258%22%20rx%3D%224%22%20fill%3D%22%23d97706%22%20stroke%3D%22%231f2937%22%20stroke-width%3D%226%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%3Ccircle%20cx%3D%22130%22%20cy%3D%22122%22%20r%3D%226%22%20fill%3D%22%23fef3c7%22%20stroke%3D%22%231f2937%22%20stroke-width%3D%226%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E',
+      pencil: 'data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20200%20200%22%3E%3Crect%20width%3D%22200%22%20height%3D%22200%22%20rx%3D%2224%22%20fill%3D%22%23ffffff%22%2F%3E%3Cpath%20d%3D%22M40%20160%20L54%20124%20L132%2046%20a14%2014%200%200%201%2020%200%20l6%206%20a14%2014%200%200%201%200%2020%20L80%20150%20Z%22%20fill%3D%22%23facc15%22%20stroke%3D%22%231f2937%22%20stroke-width%3D%226%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%3Cpath%20d%3D%22M40%20160%20L54%20124%20L80%20150%20Z%22%20fill%3D%22%23fde68a%22%20stroke%3D%22%231f2937%22%20stroke-width%3D%226%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%3Cpath%20d%3D%22M40%20160%20l6%20-14%22%20stroke%3D%22%231f2937%22%20stroke-width%3D%226%22%20stroke-linecap%3D%22round%22%2F%3E%3Cpath%20d%3D%22M132%2046%20l26%2026%22%20stroke%3D%22%231f2937%22%20stroke-width%3D%226%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20fill%3D%22none%22%2F%3E%3Cpath%20d%3D%22M144%2058%20l-4%20-4%22%20stroke%3D%22%23ef4444%22%20stroke-width%3D%2212%22%20stroke-linecap%3D%22round%22%2F%3E%3C%2Fsvg%3E',
       ball: 'data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20200%20200%22%3E%3Crect%20width%3D%22200%22%20height%3D%22200%22%20rx%3D%2224%22%20fill%3D%22%23ffffff%22%2F%3E%3Ccircle%20cx%3D%22100%22%20cy%3D%22100%22%20r%3D%2262%22%20fill%3D%22%23ffffff%22%20stroke%3D%22%231f2937%22%20stroke-width%3D%226%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%0A%3Cpath%20d%3D%22M100%2066%20L126%2084%20L116%20114%20H84%20L74%2084%20Z%22%20fill%3D%22%231f2937%22%2F%3E%0A%3Cpath%20d%3D%22M100%2066%20V40%20M126%2084%20L154%2074%20M116%20114%20L134%20142%20M84%20114%20L66%20142%20M74%2084%20L46%2074%22%20fill%3D%22none%22%20stroke%3D%22%231f2937%22%20stroke-width%3D%226%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E',
       bat: 'data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20200%20200%22%3E%3Crect%20width%3D%22200%22%20height%3D%22200%22%20rx%3D%2224%22%20fill%3D%22%23ffffff%22%2F%3E%3Cpath%20d%3D%22M100%2080%20C80%2060%2050%2050%2014%2066%20C30%2074%2030%2092%2026%20104%20C40%2096%2052%20100%2058%20112%20C66%20100%2080%20100%2088%20110%20L100%20118%20L112%20110%20C120%20100%20134%20100%20142%20112%20C148%20100%20160%2096%20174%20104%20C170%2092%20170%2074%20186%2066%20C150%2050%20120%2060%20100%2080%20Z%22%20fill%3D%22%23374151%22%20stroke%3D%22%231f2937%22%20stroke-width%3D%226%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%0A%3Cellipse%20cx%3D%22100%22%20cy%3D%2296%22%20rx%3D%2220%22%20ry%3D%2226%22%20fill%3D%22%23374151%22%20stroke%3D%22%231f2937%22%20stroke-width%3D%226%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%0A%3Cpath%20d%3D%22M86%2076%20L88%2058%20L96%2072%20M114%2076%20L112%2058%20L104%2072%22%20fill%3D%22%23374151%22%20stroke%3D%22%231f2937%22%20stroke-width%3D%226%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%0A%3Ccircle%20cx%3D%2293%22%20cy%3D%2290%22%20r%3D%224%22%20fill%3D%22%23fff%22%2F%3E%3Ccircle%20cx%3D%22107%22%20cy%3D%2290%22%20r%3D%224%22%20fill%3D%22%23fff%22%2F%3E%3C%2Fsvg%3E',
       black: 'data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20200%20200%22%3E%3Crect%20width%3D%22200%22%20height%3D%22200%22%20rx%3D%2224%22%20fill%3D%22%23ffffff%22%2F%3E%3Cpath%20d%3D%22M100%2036%20C130%2034%20150%2052%20160%2074%20C176%2080%20178%20100%20166%20108%20C176%20128%20160%20152%20136%20150%20C124%20168%2092%20170%2080%20154%20C56%20160%2034%20144%2040%20122%20C24%20112%2028%2088%2046%2082%20C48%2056%2072%2038%20100%2036%20Z%22%20fill%3D%22%23111827%22%20stroke%3D%22%231f2937%22%20stroke-width%3D%226%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%0A%3Ccircle%20cx%3D%22164%22%20cy%3D%22160%22%20r%3D%229%22%20fill%3D%22%23111827%22%2F%3E%3Ccircle%20cx%3D%2234%22%20cy%3D%2260%22%20r%3D%226%22%20fill%3D%22%23111827%22%2F%3E%3C%2Fsvg%3E',
@@ -2871,7 +3106,29 @@
       saveSettings();
     }
 
+    // ─── Recorded voice first, browser voice as the fallback ───
+    // Put mp3 files in audio/<lang>/<slug>.mp3 and list the slugs in audio/manifest.json
+    // ({"ms":["bola","bo","la"],"en":[]}). tools/make_audio.py builds both from the lesson words.
+    const audioSlug = (txt) => String(txt).toLowerCase().normalize('NFC').replace(/[^\p{L}\p{N}\s-]/gu, '').trim().replace(/\s+/g, '-');
+    let audioManifest = { ms: new Set(), en: new Set() }, activeClip = null;
+    fetch('audio/manifest.json').then(r => r.ok ? r.json() : null).then(m => { if (m) audioManifest = { ms: new Set(m.ms || []), en: new Set(m.en || []) }; }).catch(() => {});
+    function stopSpeech() { try { window.speechSynthesis.cancel(); } catch (e) {} if (activeClip) { activeClip.pause(); activeClip = null; } hideAudioWave(); }
     function speakText(text, rate = 0.9, pitch = 1.0) {
+      const slug = audioSlug(text);
+      if (slug && audioManifest[LANG] && audioManifest[LANG].has(slug)) {
+        try { window.speechSynthesis.cancel(); } catch (e) {}
+        if (activeClip) activeClip.pause();
+        const clip = new Audio('audio/' + LANG + '/' + slug + '.mp3');
+        clip.playbackRate = Math.max(0.5, Math.min(1.5, audioSpeedFactor()));
+        activeClip = clip; showAudioWave(text);
+        clip.onended = () => { if (activeClip === clip) { activeClip = null; hideAudioWave(); } };
+        clip.onerror = () => { audioManifest[LANG].delete(slug); activeClip = null; speakWithBrowser(text, rate, pitch); };
+        clip.play().catch(() => { if (activeClip === clip) { audioManifest[LANG].delete(slug); activeClip = null; speakWithBrowser(text, rate, pitch); } });
+        return;
+      }
+      speakWithBrowser(text, rate, pitch);
+    }
+    function speakWithBrowser(text, rate = 0.9, pitch = 1.0) {
       if (!('speechSynthesis' in window)) {
         showSettingToast('This browser cannot read text out loud.');
         return;
@@ -2910,7 +3167,7 @@
         document.body.appendChild(wave);
       }
       const shortText = text.length > 40 ? text.substring(0, 40) + '…' : text;
-      wave.innerHTML = `<svg class="ico" aria-hidden="true"><use href="#i-volume"/></svg> <span>“${shortText}”</span> <button onclick="window.speechSynthesis.cancel(); hideAudioWave();" aria-label="${t('Stop reading')}" style="background:rgba(255,255,255,0.2);color:#fff;border-radius:50%;width:32px;height:32px;font-weight:800">✕</button>`;
+      wave.innerHTML = `<svg class="ico" aria-hidden="true"><use href="#i-volume"/></svg> <span>“${shortText}”</span> <button onclick="stopSpeech()" aria-label="${t('Stop reading')}" style="background:rgba(255,255,255,0.2);color:#fff;border-radius:50%;width:32px;height:32px;font-weight:800">✕</button>`;
       wave.style.transform = 'translateY(0)';
       wave.style.opacity = '1';
       wave.style.pointerEvents = 'auto';
@@ -2972,10 +3229,29 @@
       document.getElementById('t-idx').textContent = tIdx + 1;
       document.getElementById('t-total').textContent = tracingLetters.length;
       document.getElementById('traceCanvas').setAttribute('aria-label', window.t('Drawing area. Trace the letter {l}.', { l: t.letter }));
+      zoneCache = null;
       clearCanvas();
       setTraceFeedback('', '');
       drawGuide();
       if (document.fonts && document.fonts.load) document.fonts.load(TRACE_FONT(420)).then(drawGuide).catch(() => {});
+    }
+
+    // Mask of "close enough to the letter" (same width as the check in scoreTracing).
+    let zoneCache = null;
+    function onLetter(x, y) {
+      const c = document.getElementById('traceCanvas');
+      const key = tracingLetters[tIdx].letter + c.width + 'x' + c.height;
+      if (!zoneCache || zoneCache.key !== key) {
+        const m = document.createElement('canvas'); m.width = c.width; m.height = c.height;
+        const mx = m.getContext('2d'); const L = letterLayout(m);
+        mx.font = L.font; mx.textAlign = 'center';
+        mx.lineWidth = 34; mx.lineJoin = 'round'; mx.fillStyle = '#000'; mx.strokeStyle = '#000';
+        mx.fillText(tracingLetters[tIdx].letter, L.x, L.y); mx.strokeText(tracingLetters[tIdx].letter, L.x, L.y);
+        zoneCache = { key, w: m.width, h: m.height, d: mx.getImageData(0, 0, m.width, m.height).data };
+      }
+      const xi = Math.round(x), yi = Math.round(y);
+      if (xi < 0 || yi < 0 || xi >= zoneCache.w || yi >= zoneCache.h) return false;
+      return zoneCache.d[(yi * zoneCache.w + xi) * 4 + 3] > 0;
     }
 
     function initCanvas() {
@@ -2988,9 +3264,39 @@
       ctx.lineJoin = 'round';
       ctx.strokeStyle = '#0f172a';
       const pos = (x, y) => { const r = canvas.getBoundingClientRect(); return [x - r.left, y - r.top]; };
-      const start = (x, y) => { const [px, py] = pos(x, y); ctx.beginPath(); ctx.moveTo(px, py); tracePoints.push([px, py]); isDrawing = true; };
-      const move = (x, y) => { if (!isDrawing) return; const [px, py] = pos(x, y); ctx.lineTo(px, py); ctx.stroke(); tracePoints.push([px, py]); };
-      const end = () => { isDrawing = false; };
+      let wasOff = false, warnedThisStroke = false;
+      const setOff = (off) => {
+        canvas.classList.toggle('off-line', off);
+        ctx.strokeStyle = off ? '#ea580c' : '#0f172a';
+        if (off) {
+          setTraceFeedback(window.t('Oops, that is outside the letter. Move back to the dotted line.'), 'retry');
+          if (navigator.vibrate) navigator.vibrate(40);
+          if (!warnedThisStroke) { warnedThisStroke = true; speakText(window.t('Back to the dotted line.'), 0.9); }
+        } else if (wasOff) {
+          setTraceFeedback(window.t('Good, you are back on the line.'), 'good');
+        }
+        wasOff = off;
+      };
+      const start = (x, y) => {
+        const [px, py] = pos(x, y);
+        warnedThisStroke = false; wasOff = false;
+        ctx.strokeStyle = '#0f172a';
+        const off = !onLetter(px, py);
+        ctx.beginPath(); ctx.moveTo(px, py); tracePoints.push([px, py]); isDrawing = true;
+        if (off) setOff(true); else setTraceFeedback('', '');
+      };
+      const move = (x, y) => {
+        if (!isDrawing) return;
+        const [px, py] = pos(x, y);
+        const off = !onLetter(px, py);
+        if (off !== wasOff) {
+          // finish the segment in the old colour, then start a new one in the new colour
+          ctx.stroke(); ctx.beginPath(); const l = tracePoints[tracePoints.length - 1]; if (l) ctx.moveTo(l[0], l[1]);
+          setOff(off);
+        }
+        ctx.lineTo(px, py); ctx.stroke(); tracePoints.push([px, py]);
+      };
+      const end = () => { isDrawing = false; canvas.classList.remove('off-line'); ctx.strokeStyle = '#0f172a'; wasOff = false; };
       canvas.onpointerdown = (e) => { e.preventDefault(); canvas.setPointerCapture && canvas.setPointerCapture(e.pointerId); start(e.clientX, e.clientY); };
       canvas.onpointermove = (e) => move(e.clientX, e.clientY);
       canvas.onpointerup = end;
@@ -3382,6 +3688,7 @@
         document.getElementById('parent-notif-read').onclick = () => openNote(fresh.id);
         notif.dataset.id = fresh.id;
       } else notif.style.display = 'none';
+      renderParentThread();
       document.getElementById('parent-notes-title').textContent = t('Notes for {child}', { child: CHILD_NAME });
       document.getElementById('parent-notes-list').innerHTML = list.length
         ? list.map(n => noteRow(n, { status: true, openLabel: 'Read together', primaryLight: true })).join('')
@@ -3394,7 +3701,232 @@
       notif.style.display = 'none';
     }
 
+
+    // ─── Teacher dashboard tabs ───
+    const FB_KEY = 'dla-feedback', ASSIGN_KEY = 'dla-assign', LESSON_KEY = 'dla-lessons';
+    const jget = (k, d) => { try { return JSON.parse(localStorage.getItem(k) || d); } catch (e) { return JSON.parse(d); } };
+    const jset = (k, v) => { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} };
+    const loadFeedback = () => jget(FB_KEY, '[]');
+    const hash = (str) => { let h = 2166136261; for (const c of str) { h ^= c.charCodeAt(0); h = Math.imul(h, 16777619); } return (h >>> 0); };
+    const rnd = (seed, n) => (hash(seed + ':' + n) % 1000) / 1000;
+    const CLASS_NAMES = {
+      '1A': ['Aisyah', 'Adam', 'Sara', 'Nina', 'Danish', 'Hakim', 'Mei Ling', 'Arjun', 'Farah', 'Irfan', 'Siti', 'Wei Jie', 'Priya', 'Zulkifli', 'Nurul', 'Ethan', 'Balqis', 'Daniel'],
+      '1B': ['Amir', 'Hana', 'Kavitha', 'Ryan', 'Alya', 'Haziq', 'Jia Hui', 'Imran', 'Sofea', 'Raj', 'Qistina', 'Zafran', 'Lina', 'Marcus', 'Yusuf', 'Dania']
+    };
+    const FIXED = { Aisyah: 75, Adam: 70, Sara: 68, Nina: 41, Danish: 33 };
+    const SKILLS = [['Phonics', ''], ['Syllables', 'green'], ['Blending', 'purple'], ['Reading', 'orange']];
+    const PERIOD_X = { week: 1, month: 4, all: 14 };
+    function curClass() { return (document.getElementById('sel-class') || {}).value || '1A'; }
+    function curPeriod() { return (document.getElementById('sel-period') || {}).value || 'week'; }
+    function getStudents() {
+      const cls = curClass(), px = PERIOD_X[curPeriod()];
+      return CLASS_NAMES[cls].map(name => {
+        const base = FIXED[name] || Math.round(48 + rnd(name, 0) * 28);
+        const skills = SKILLS.map((_, i) => Math.max(12, Math.min(97, Math.round(base + (rnd(name, i + 1) - 0.5) * 22))));
+        const overall = Math.round(skills.reduce((a, b) => a + b, 0) / 4);
+        const acc = Math.max(30, Math.min(95, Math.round(base * 0.55 + 38 + (rnd(name, 7) - 0.5) * 8)));
+        const lessons = Math.max(1, Math.round((base / 20 + rnd(name, 8)) * px));
+        return { name, cls, overall: FIXED[name] || overall, skills, acc, lessons, words: Math.round(lessons * (6 + rnd(name, 9) * 3)),
+                 streak: 1 + Math.round(rnd(name, 10) * 9), bd: Math.round((100 - base) / 6 + rnd(name, 11) * 4), pq: Math.round((100 - base) / 9 + rnd(name, 12) * 3),
+                 status: base < 45 ? 'Struggling' : base < 60 ? 'Needs review' : 'On track' };
+      });
+    }
+    let selStudent = null;
+    function badgeFor(st) { return st === 'On track' ? 'green' : st === 'Needs review' ? 'orange' : 'coral'; }
+    function bar(pct, cls) { return `<div class="progress-bar"><div class="progress-fill ${cls || ''}" style="width:${pct}%"></div></div>`; }
+
+    function renderStudents() {
+      const q = (document.getElementById('stu-search').value || '').toLowerCase(), f = document.getElementById('stu-filter').value;
+      const all = getStudents();
+      const list = all.filter(s => s.name.toLowerCase().includes(q) && (f === 'all' || (f === 'support' ? s.status !== 'On track' : s.status === 'On track')));
+      if (!selStudent || !all.find(s => s.name === selStudent)) selStudent = all[0].name;
+      document.getElementById('stu-table').innerHTML = list.length ? list.map(s => `<button type="button" class="stu-row${s.name === selStudent ? ' sel' : ''}" onclick="pickStudent('${s.name}')" aria-pressed="${s.name === selStudent}">
+        <div class="avatar sm">${s.name[0]}</div><span class="nm">${escapeHtml(s.name)}<div class="dt">${t('{n} lessons', { n: s.lessons })}</div></span>${bar(s.overall, s.overall < 45 ? 'orange' : 'green')}<span class="pct">${s.overall}%</span><span class="badge ${badgeFor(s.status)}">${t(s.status)}</span></button>`).join('')
+        : `<p style="padding:16px;color:var(--muted)">${t('No students match.')}</p>`;
+      const s = all.find(x => x.name === selStudent);
+      const acts = [
+        t('Read {n} words in "Short a words"', { n: 4 + Math.round(rnd(s.name, 20) * 6) }),
+        t('Traced b and d: {n} tries', { n: 2 + Math.round(rnd(s.name, 21) * 4) }),
+        t('Practised {n} minutes yesterday', { n: 5 + Math.round(rnd(s.name, 22) * 12) })
+      ];
+      document.getElementById('stu-detail').innerHTML = `
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px"><div class="avatar xl">${s.name[0]}</div><div><h3 style="font-size:1.125rem;font-weight:800">${escapeHtml(s.name)}</h3><span class="badge ${badgeFor(s.status)}">${t(s.status)}</span></div></div>
+        ${SKILLS.map((k, i) => `<div class="skill-row"><span class="skill-name">${t(k[0])}</span>${bar(s.skills[i], k[1])}<span class="skill-percent">${s.skills[i]}%</span></div>`).join('')}
+        <div class="rep-grid" style="grid-template-columns:repeat(3,1fr);margin:16px 0"><div><div class="teacher-stat-value" style="font-size:1.25rem">${s.acc}%</div><div class="tt-note" style="margin:2px 0">${t('Accuracy')}</div></div><div><div class="teacher-stat-value" style="font-size:1.25rem">${s.words}</div><div class="tt-note" style="margin:2px 0">${t('Words read')}</div></div><div><div class="teacher-stat-value" style="font-size:1.25rem">${s.streak}</div><div class="tt-note" style="margin:2px 0">${t('Days in a row')}</div></div></div>
+        <h4 style="font-size:0.875rem;font-weight:700;margin-bottom:6px">${t('Letters to practise')}</h4>
+        <p class="tt-note" style="margin-top:0">${t('b and d mixed up {a} times. p and q mixed up {b} times.', { a: s.bd, b: s.pq })}</p>
+        <h4 style="font-size:0.875rem;font-weight:700;margin:12px 0 6px">${t('Recent activity')}</h4>
+        <ul style="padding-left:18px;color:var(--ink2);font-size:0.875rem;line-height:1.7">${acts.map(a => `<li>${a}</li>`).join('')}</ul>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:16px"><button type="button" class="btn sm" onclick="writeTo('${s.name}')">${t('Write to parent')}</button><button type="button" class="btn sm outline" onclick="showPage('notes'); startNewNote()">${t('Send a practice note')}</button></div>`;
+    }
+    function pickStudent(n) { selStudent = n; renderStudents(); }
+    function writeTo(n) { teacherTab('feedback'); const sel = document.getElementById('fb-student'); if (sel) sel.value = n; }
+
+    // Curriculum
+    const LESSONS = [
+      { id: 'l1', title: 'Letter sounds: a, e, i, o, u', status: 'Done', en: ['a', 'e', 'i', 'o', 'u'], ms: ['a', 'e', 'i', 'o', 'u'], skill: 'Phonics', min: 6 },
+      { id: 'l2', title: 'Short a words', status: 'This week', en: ['cat', 'bat', 'hat', 'map', 'van'], ms: ['bola', 'buku', 'topi', 'peta', 'batu'], skill: 'Blending', min: 8, open: 'reading', set: 'a' },
+      { id: 'l3', title: 'Trace b and d', status: 'This week', en: ['b', 'd', 'p', 'q'], ms: ['b', 'd', 'p', 'g'], skill: 'Phonics', min: 5, open: 'tracing' },
+      { id: 'l4', title: 'Short e words', status: 'This week', en: ['bed', 'pen', 'hen', 'net', 'tent'], ms: ['meja', 'pintu', 'pensel', 'katil', 'tikar'], skill: 'Blending', min: 8, open: 'reading', set: 'e' },
+      { id: 'l5', title: 'Blends: bl, br, cl', status: 'Coming up', en: ['black', 'brown', 'clap', 'block', 'club'], ms: ['makan', 'bakar', 'pasar', 'kucing', 'tangan'], skill: 'Syllables', min: 10 },
+      { id: 'l6', title: 'Short sentences', status: 'Coming up', en: ['The cat sat.', 'A hat on a mat.'], ms: ['Ibu masak nasi.', 'Adik main bola.'], skill: 'Reading', min: 10 }
+    ];
+    function allLessons() { return LESSONS.concat(jget(LESSON_KEY, '[]').map(l => Object.assign({ status: 'Coming up', custom: true, skill: 'Reading', min: 8 }, l))); }
+    let openLesson = 'l2';
+    function sylWord(w) {
+      const parts = LANG === 'ms' ? (w.toLowerCase().match(/(?:ng|ny|sy|kh|gh|[^aeiou\s])?[aeiou]+(?:(?:ng|ny|[^aeiou])(?![aeiou]))?/g) || [w]) : w.split('');
+      return `<span class="syl">${parts.map(p => `<b>${escapeHtml(p)}</b>`).join('')}</span>`;
+    }
+    function renderCurriculum() {
+      const as = jget(ASSIGN_KEY, '[]');
+      document.getElementById('cur-list').innerHTML = allLessons().map(l => {
+        const words = (l.custom ? l.words : l[LANG === 'ms' ? 'ms' : 'en']) || [];
+        const open = openLesson === l.id, assigned = as.find(a => a.id === l.id && a.cls === curClass());
+        const badge = l.status === 'Done' ? 'green' : l.status === 'This week' ? 'orange' : 'blue';
+        return `<div class="cur-card"><button type="button" class="cur-head" aria-expanded="${open}" onclick="openLesson = openLesson === '${l.id}' ? null : '${l.id}'; renderCurriculum()">
+          <span class="ttl">${escapeHtml(l.custom ? l.title : t(l.title))}<span class="sub">${t(l.skill)} · ${t('About {n} minutes', { n: l.min })}</span></span>${assigned ? `<span class="badge green">${t('Assigned')}</span>` : ''}<span class="badge ${badge}">${t(l.custom ? 'Your lesson' : l.status)}</span><span aria-hidden="true">${open ? '▴' : '▾'}</span></button>
+          ${open ? `<div class="cur-body"><div class="tt-note">${t('Words')}</div>${words.map(sylWord).join('')}<div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:8px">
+            ${l.open ? `<button type="button" class="btn sm" onclick="${l.set ? `chooseLessonSet('${l.set}', true)` : `showPage('${l.open}')`}">${t('Open lesson')}</button>` : ''}
+            <button type="button" class="btn sm ${assigned ? 'outline' : ''}" onclick="toggleAssign('${l.id}')">${assigned ? t('Remove assignment') : t('Assign to {cls}', { cls: t('Class ' + curClass()) })}</button></div></div>` : ''}</div>`;
+      }).join('');
+    }
+    function toggleAssign(id) {
+      let as = jget(ASSIGN_KEY, '[]'); const cls = curClass();
+      if (as.find(a => a.id === id && a.cls === cls)) as = as.filter(a => !(a.id === id && a.cls === cls));
+      else { const d = new Date(); d.setDate(d.getDate() + 7); as.push({ id, cls, due: d.toISOString() }); }
+      jset(ASSIGN_KEY, as); renderCurriculum(); renderAssign();
+    }
+
+    // Lesson builder
+    function parseWords() { return document.getElementById('lb-words').value.split(/[,\n]/).map(w => w.trim()).filter(Boolean).slice(0, 12); }
+    function renderBuilderPreview() {
+      const w = parseWords();
+      document.getElementById('lb-hint').textContent = LANG === 'ms' ? t('Each word is split into syllables (suku kata).') : t('Each word is shown with its letters, to tap and hear.');
+      document.getElementById('lb-preview').innerHTML = w.length ? w.map(sylWord).join('') : `<p style="color:var(--muted)">${t('Type some words to see the preview.')}</p>`;
+    }
+    function saveCustomLesson() {
+      const st = document.getElementById('lb-status'), title = document.getElementById('lb-title').value.trim(), words = parseWords();
+      if (!title || words.length < 2) { st.textContent = t('Add a title and at least two words.'); return; }
+      const ls = jget(LESSON_KEY, '[]'); ls.push({ id: 'c' + Date.now(), title, words, level: document.getElementById('lb-level').value }); jset(LESSON_KEY, ls);
+      document.getElementById('lb-title').value = ''; document.getElementById('lb-words').value = ''; renderBuilderPreview();
+      st.textContent = t('Added to the curriculum.'); renderCurriculum();
+    }
+
+    // Assignments
+    function renderAssign() {
+      const as = jget(ASSIGN_KEY, '[]').filter(a => a.cls === curClass()), ls = allLessons(), loc = LANG === 'ms' ? 'ms-MY' : undefined;
+      document.getElementById('as-lessons').innerHTML = as.length ? `<table class="tt-table"><thead><tr><th>${t('Lesson')}</th><th>${t('Due')}</th><th>${t('Done by')}</th></tr></thead><tbody>${as.map(a => {
+        const l = ls.find(x => x.id === a.id); if (!l) return ''; const n = CLASS_NAMES[a.cls].length, done = Math.round(n * (0.25 + rnd(a.id + a.cls, 3) * 0.6));
+        return `<tr><td>${escapeHtml(l.custom ? l.title : t(l.title))}</td><td>${new Date(a.due).toLocaleDateString(loc, { day: 'numeric', month: 'short' })}</td><td>${done} / ${n}</td></tr>`; }).join('')}</tbody></table>`
+        : `<p style="color:var(--muted)">${t('No lessons assigned yet. Open Curriculum and choose Assign.')}</p>`;
+      const list = notesForRole('teacher');
+      document.getElementById('tt-assign-list').innerHTML = list.length ? list.map(n => noteRow(n, { status: true })).join('')
+        : `<p style="color:var(--muted);font-size:0.9375rem">${t('No notes sent yet. Use Simplify Notes to send the first one.')}</p>`;
+    }
+
+    // Reports
+    function renderReports() {
+      const st = getStudents(), n = st.length, avg = (f) => Math.round(st.reduce((a, s) => a + f(s), 0) / n);
+      const days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'], px = PERIOD_X[curPeriod()];
+      const perDay = days.map((d, i) => Math.round((n * 0.5) * (0.55 + rnd(curClass() + d, 1) * 0.7)));
+      const mx = Math.max(...perDay), sup = st.filter(s => s.status !== 'On track').sort((a, b) => a.overall - b.overall);
+      const best = st.slice().sort((a, b) => b.overall - a.overall).slice(0, 3);
+      document.getElementById('rep-body').innerHTML = `
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;flex-wrap:wrap;gap:10px"><h3 style="font-size:1.125rem;font-weight:800">${t('Class report')}: ${t('Class ' + curClass())}, ${t({ week: 'This Week', month: 'This Month', all: 'All Time' }[curPeriod()])}</h3>
+          <div style="display:flex;gap:10px"><button type="button" class="btn sm outline" onclick="downloadReportCsv()">${t('Download CSV')}</button><button type="button" class="btn sm" onclick="window.print()">${t('Print or save as PDF')}</button></div></div>
+        <div class="rep-grid">
+          <div class="teacher-stat-card"><div class="teacher-stat-value">${avg(s => s.lessons)}</div><div class="teacher-stat-label">${t('Lessons per student')}</div></div>
+          <div class="teacher-stat-card"><div class="teacher-stat-value">${avg(s => s.acc)}%</div><div class="teacher-stat-label">${t('Average accuracy')}</div></div>
+          <div class="teacher-stat-card"><div class="teacher-stat-value">${sup.length}</div><div class="teacher-stat-label">${t('Need support')}</div></div>
+        </div>
+        <div class="tt-split" style="margin-bottom:20px">
+          <div class="card"><h3 style="font-size:1rem;font-weight:700">${t('Students practising each day')}</h3><div class="bars">${perDay.map((v, i) => `<div class="col"><b>${v}</b><i style="height:${Math.round(v / mx * 100)}%"></i>${t(days[i])}</div>`).join('')}</div></div>
+          <div class="card"><h3 style="font-size:1rem;font-weight:700;margin-bottom:12px">${t('Class average by skill')}</h3>${SKILLS.map((k, i) => { const v = avg(s => s.skills[i]); return `<div class="skill-row"><span class="skill-name">${t(k[0])}</span>${bar(v, k[1])}<span class="skill-percent">${v}%</span></div>`; }).join('')}</div>
+        </div>
+        <div class="tt-split"><div class="card"><h3 style="font-size:1rem;font-weight:700;margin-bottom:8px">${t('Top students')}</h3>${best.map(s => `<div class="student-row"><div class="avatar sm">${s.name[0]}</div><div class="student-info"><div class="student-name">${escapeHtml(s.name)}</div></div><span class="student-percent">${s.overall}%</span></div>`).join('')}</div>
+        <div class="card"><h3 style="font-size:1rem;font-weight:700;margin-bottom:8px">${t('Students Need Support')}</h3>${sup.length ? sup.map(s => `<div class="student-row"><div class="avatar sm">${s.name[0]}</div><div class="student-info"><div class="student-name">${escapeHtml(s.name)}</div><div class="student-detail">${t('b and d mixed up {a} times. p and q mixed up {b} times.', { a: s.bd, b: s.pq })}</div></div><span class="badge ${badgeFor(s.status)}">${t(s.status)}</span></div>`).join('') : `<p style="color:var(--muted)">${t('Everyone is on track.')}</p>`}</div></div>`;
+    }
+    function downloadReportCsv() {
+      const rows = [['Student', 'Overall %', 'Phonics %', 'Syllables %', 'Blending %', 'Reading %', 'Accuracy %', 'Lessons', 'Words read']].concat(getStudents().map(s => [s.name, s.overall, ...s.skills, s.acc, s.lessons, s.words]));
+      const blob = new Blob([rows.map(r => r.join(',')).join('\n')], { type: 'text/csv' });
+      const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'report-class-' + curClass() + '.csv'; document.body.appendChild(a); a.click(); a.remove();
+    }
+
+    // Feedback
+    const FB_TEMPLATES = ['{name} read well today. Well done!', 'Please practise b and d with {name} for 10 minutes at home.', '{name} found today\'s lesson hard. Could we talk this week?', 'Thank you for reading together at home. It is making a difference.'];
+    function renderFeedbackForm() {
+      const sel = document.getElementById('fb-student'), cur = sel.value;
+      sel.innerHTML = getStudents().map(s => `<option value="${escapeHtml(s.name)}">${escapeHtml(s.name)}</option>`).join(''); if (cur) sel.value = cur;
+      sel.onchange = renderFeedbackForm;
+      const name = sel.value;
+      document.getElementById('fb-templates').innerHTML = FB_TEMPLATES.map((m, i) => `<button type="button" class="tt-chip" onclick="document.getElementById('tt-fb-text').value = this.dataset.m; document.getElementById('tt-fb-text').focus()" data-m="${escapeHtml(t(m, { name }))}">${escapeHtml(t(m, { name }).slice(0, 38))}…</button>`).join('');
+      const all = loadFeedback().map(f => Object.assign({ id: f.id || ('f' + f.at) }, f)).concat([SEED_MSG]);
+      document.getElementById('tt-fb-list').innerHTML = all.map(m => threadHtml(m, 'teacher')).join('');
+      updateFbBadge();
+    }
+    function sendTeacherFeedback() {
+      const box = document.getElementById('tt-fb-text'), st = document.getElementById('tt-fb-status'), student = document.getElementById('fb-student').value;
+      const text = box.value.trim();
+      if (!text) { st.textContent = t('Write a message first.'); box.focus(); return; }
+      const list = loadFeedback(); { const at = new Date().toISOString(); list.unshift({ id: 'f' + Date.now(), text, student, at }); } jset(FB_KEY, list.slice(0, 30));
+      box.value = ''; st.textContent = t('Sent to the parent of {name}.', { name: student }); renderFeedbackForm();
+    }
+
+
+    // ─── Teacher feedback threads (parent can reply, teacher sees it) ───
+    const REPLY_KEY = 'dla-replies';
+    const SEED_MSG = { id: 'seed', student: 'Aisyah', text: "Aisyah is doing well! She is improving in reading short words. Let's keep practicing b and d.", seed: true };
+    const loadReplies = () => jget(REPLY_KEY, '[]');
+    function threadsFor(student) {
+      const list = loadFeedback().map(f => Object.assign({ id: f.id || ('f' + f.at) }, f));
+      const all = student === CHILD_NAME || !student ? list.filter(f => !f.student || f.student === CHILD_NAME).concat([SEED_MSG]) : list.filter(f => f.student === student);
+      return all;
+    }
+    function msgWhen(m) { return m.seed ? t('2 days ago') : whenText(m.at); }
+    function threadHtml(m, role) {
+      const reps = loadReplies().filter(r => r.to === m.id).sort((a, b) => a.at < b.at ? -1 : 1);
+      const who = (from) => from === role ? t('You') : (from === 'parent' ? t('Parent of {name}', { name: m.student || CHILD_NAME }) : 'Cikgu Sarah');
+      const sid = 'rp-' + m.id + '-' + role;
+      return `<div class="thread"><div class="msg"><span class="who">${role === 'teacher' ? escapeHtml((m.student || CHILD_NAME)) + ' · ' + t('You') : 'Cikgu Sarah'}</span>${escapeHtml(m.seed ? t(m.text) : m.text)}<small>${escapeHtml(msgWhen(m))}</small></div>
+        ${reps.map(r => `<div class="reply${r.from === role ? '' : ' theirs'}"><span class="who" style="font-weight:700;font-size:0.75rem">${escapeHtml(who(r.from))}</span>${escapeHtml(r.text)}<small>${escapeHtml(whenText(r.at))}</small></div>`).join('')}
+        <div class="reply-form"><input type="text" id="${sid}" aria-label="${escapeHtml(t('Write a reply'))}" placeholder="${escapeHtml(t('Write a reply'))}" onkeydown="if(event.key==='Enter'){sendReply('${m.id}','${role}')}"><button type="button" class="btn sm" onclick="sendReply('${m.id}','${role}')">${t('Reply')}</button></div></div>`;
+    }
+    function sendReply(id, role) {
+      const inp = document.getElementById('rp-' + id + '-' + role); const text = (inp.value || '').trim();
+      if (!text) { inp.focus(); return; }
+      const list = loadReplies(); list.push({ id: 'r' + Date.now(), to: id, from: role, text, at: new Date().toISOString(), readT: role === 'teacher' }); jset(REPLY_KEY, list.slice(-60));
+      if (role === 'parent') { renderParentThread(); renderTeacherDash(); } else { renderFeedbackForm(); renderParentThread(); }
+    }
+    function renderParentThread() {
+      const box = document.getElementById('parent-fb-card'); if (!box) return;
+      box.innerHTML = `<h3>${t('From the teacher')}</h3>` + threadsFor(CHILD_NAME).map(m => threadHtml(m, 'parent')).join('');
+    }
+    function unreadParentReplies() { return loadReplies().filter(r => r.from === 'parent' && !r.readT); }
+    function updateFbBadge() {
+      const n = unreadParentReplies().length, b = document.getElementById('fb-badge');
+      if (b) { b.hidden = n === 0; b.textContent = n; }
+      const box = document.getElementById('teacher-reply-notice');
+      if (box) { box.hidden = n === 0; if (n) document.getElementById('teacher-reply-summary').textContent = t('{n} new reply from parents. Latest: "{text}"', { n, text: unreadParentReplies().slice(-1)[0].text }); }
+    }
+    function markRepliesRead() { const l = loadReplies(); l.forEach(r => { if (r.from === 'parent') r.readT = true; }); jset(REPLY_KEY, l); }
+
+    function renderTeacherTabs() {
+      const st = getStudents(), n = st.length, px = PERIOD_X[curPeriod()];
+      const set = (id, v) => { const e = document.getElementById(id); if (e) e.textContent = v; };
+      set('ov-students', n); set('ov-lessons', Math.round(n * 1.3 * px)); set('ov-acc', Math.round(st.reduce((a, s) => a + s.acc, 0) / n) + '%');
+      document.querySelectorAll('#tt-overview .skill-row').forEach((row, i) => { const v = Math.round(st.reduce((a, s) => a + s.skills[i], 0) / n); row.querySelector('.progress-fill').style.width = v + '%'; row.querySelector('.skill-percent').textContent = v + '%'; });
+      renderStudents(); renderCurriculum(); renderBuilderPreview(); renderAssign(); renderReports(); renderFeedbackForm();
+    }
+    function teacherTab(name) {
+      if (name === 'notes') { showPage('notes'); return; }
+      document.querySelectorAll('.teacher-tab').forEach(b => { const on = b.dataset.tab === name; b.classList.toggle('active', on); b.setAttribute('aria-selected', on ? 'true' : 'false'); });
+      document.querySelectorAll('.tt-panel').forEach(p => { p.hidden = p.id !== 'tt-' + name; });
+      if (name === 'feedback') markRepliesRead();
+      renderTeacherTabs();
+    }
+
     function renderTeacherDash() {
+      if (typeof updateFbBadge === 'function') updateFbBadge();
       const list = notesForRole('teacher');
       const box = document.getElementById('teacher-recent-publications');
       if (!box) return;
@@ -3646,10 +4178,12 @@
       // The daily lesson and tracing letters follow the language; an open note keeps its own language
       document.getElementById('home-lesson-title').textContent = dailyLesson().title;
       document.getElementById('home-lesson-blurb').textContent = dailyLesson().blurb;
+      renderLessonShelf();
       loadLesson(currentNote ? currentNote.id : null);
       tIdx = 0; if (ctx) updateTracing();
       renderSample();
       renderAllNotes();
+      if (typeof renderTeacherTabs === 'function') renderTeacherTabs();
       if (!document.getElementById('notes-wizard').hidden) document.getElementById('publish-btn').textContent = t('Send to {to}', { to: currentLoginRole === 'parent' ? CHILD_NAME : t(TEACHER_CLASS) });
     }
 
