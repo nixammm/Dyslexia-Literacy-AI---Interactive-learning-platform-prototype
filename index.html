@@ -472,7 +472,28 @@
     }
     .speaker-btn:hover { background:var(--blue); color:#fff; }
     .word-text { font-size:clamp(5rem,12vw,8rem); font-weight:900; line-height:1; }
+    .trace-progress { display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:12px; }
+    .trace-pill { display:inline-flex; align-items:center; justify-content:center; min-width:40px; height:40px; padding:0 12px; border-radius:12px; background:var(--soft); border:2px solid var(--line); font-weight:800; font-size:1.125rem; color:var(--ink2); gap:4px; }
+    .trace-pill.now { border-color:var(--blue); color:var(--blue); }
+    .trace-pill.done { background:#dcfce7; border-color:#16a34a; color:#166534; }
+    .trace-board { position:relative; }
+    .trace-board.success { box-shadow:0 0 0 4px #16a34a, 0 0 0 10px rgba(22,163,74,.2); border-radius:var(--radius-lg); transition:box-shadow .2s; }
+    .trace-burst { position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; pointer-events:none; z-index:5; animation:burstin 1.5s ease-out forwards; }
+    .trace-burst .big { font-size:5rem; line-height:1; filter:drop-shadow(0 4px 10px rgba(0,0,0,.2)); }
+    .trace-burst .txt { font-weight:800; font-size:1.5rem; color:#92400e; background:#fef3c7; padding:6px 18px; border-radius:999px; margin-top:8px; }
+    @keyframes burstin { 0% { transform:scale(.4); opacity:0; } 25% { transform:scale(1.15); opacity:1; } 70% { transform:scale(1); opacity:1; } 100% { transform:scale(1) translateY(-30px); opacity:0; } }
     .word-dots { display:flex; gap:8px; }
+    .word-dot.done { background:var(--green, #16a34a); width:18px; height:18px; display:inline-flex; align-items:center; justify-content:center; color:#fff; font-size:0.7rem; font-weight:800; line-height:1; }
+    .word-dot.done, .word-dot.done.active { background:#16a34a; }
+    .word-dot.done.active { box-shadow:0 0 0 3px #bbf7d0; }
+    .word-dot { transition:all .2s; }
+    .read-chip { display:inline-flex; align-items:center; gap:6px; background:var(--yellow-light, #fef3c7); color:#92400e; font-weight:700; font-size:0.8125rem; padding:5px 12px; border-radius:999px; margin-left:12px; }
+    .read-badge { display:inline-flex; align-items:center; gap:6px; background:#dcfce7; color:#166534; font-weight:800; font-size:0.9375rem; padding:6px 14px; border-radius:999px; }
+    .read-badge[hidden] { display:none; }
+    .btn.reward.is-read { background:#dcfce7; color:#166534; cursor:default; }
+    .star-pop { position:fixed; z-index:99999; font-weight:800; font-size:1.5rem; color:#b45309; pointer-events:none; animation:starpop 1.1s ease-out forwards; text-shadow:0 2px 8px rgba(0,0,0,.15); }
+    @keyframes starpop { 0% { transform:translateY(0) scale(.6); opacity:0; } 20% { opacity:1; transform:translateY(-12px) scale(1.2); } 100% { transform:translateY(-70px) scale(1); opacity:0; } }
+    body.calm .read-chip .chip-stars { display:none; }
     .word-dot { width:8px; height:8px; border-radius:50%; background:var(--line); }
     .word-dot.active { background:var(--blue); }
     .letter-tiles { display:flex; gap:8px; justify-content:center; }
@@ -911,9 +932,63 @@
     html:not([lang="ms"]) .ms-only { display:none; }
     html[lang="ms"] .en-only { display:none; }
     /* BM has no picture card on the landing page: the hero text takes the full row */
-    html[lang="ms"] .hero-illustration { display:none; }
-    html[lang="ms"] .landing-hero { grid-template-columns:1fr; }
-    html[lang="ms"] .hero-content { max-width:640px; }
+    .hv-stage { position:relative; width:100%; max-width:520px; height:600px; margin:0 auto; }
+    .hv-stage::before { content:''; position:absolute; inset:6% 4%; border-radius:50%; background:radial-gradient(circle at 35% 30%, rgba(79,124,255,.16), rgba(139,92,246,.08) 60%, transparent 72%); }
+    .hv-card { position:absolute; background:var(--surface); border:1px solid var(--line); border-radius:24px; box-shadow:var(--shadow); }
+    .hv-main { left:50%; top:42%; width:300px; transform:translate(-50%,-50%); padding:18px 22px 22px; text-align:center; }
+    .hv-top { display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; }
+    .hv-tag { font-size:.75rem; font-weight:800; letter-spacing:.06em; text-transform:uppercase; color:var(--muted); }
+    .hv-stars { font-size:.8125rem; font-weight:800; color:#92400e; background:var(--yellow-light); padding:4px 10px; border-radius:999px; }
+    .hv-picto { display:block; margin:0 auto 12px; width:150px; height:150px; object-fit:contain; border-radius:18px; background:#fff; }
+    .hv-word { display:flex; justify-content:center; gap:8px; margin-bottom:10px; }
+    .hv-word span { display:flex; gap:8px; }
+    .hv-word i { font-style:normal; width:46px; height:54px; display:grid; place-items:center; border-radius:12px; font-size:1.7rem; font-weight:800; background:var(--blue-light); color:var(--blue); border:2px solid #c7d7ff; }
+    .hv-syl { display:flex; justify-content:center; margin-bottom:14px; }
+    .hv-syl span { display:flex; gap:8px; }
+    .hv-syl b { padding:6px 16px; border-radius:999px; background:var(--green-light); color:#166534; font-size:1.05rem; font-weight:800; }
+    .hv-trace { left:0; bottom:8px; padding:14px 16px; transform:rotate(-4deg); animation:float 5s ease-in-out infinite; }
+    .hv-trace-row { display:flex; gap:6px; margin-bottom:6px; }
+    .hv-trace-row span { min-width:34px; padding:5px 8px; text-align:center; border-radius:10px; font-weight:800; background:var(--soft); color:var(--ink2); border:2px solid var(--line); }
+    .hv-trace-row span.done { background:var(--green-light); color:#166534; border-color:#16a34a; }
+    .hv-trace-note { font-size:.8125rem; font-weight:700; color:var(--muted); }
+    .hv-badge { right:0; top:8px; padding:10px 16px; display:flex; flex-direction:column; align-items:center; gap:2px; transform:rotate(5deg); animation:float 4s ease-in-out infinite; background:var(--yellow-light); border-color:#fcd34d; }
+    .hv-badge span { font-size:1.6rem; line-height:1; }
+    .hv-badge b { font-size:.95rem; color:#92400e; }
+    .hv-prog { right:0; bottom:28px; padding:12px 16px; display:flex; align-items:center; gap:10px; animation:float 6s ease-in-out infinite; }
+    .hv-ring { width:44px; height:44px; display:block; }
+    .hv-prog-t { display:flex; flex-direction:column; line-height:1.2; }
+    .hv-prog-t b { font-size:1.1rem; } .hv-prog-t em { font-style:normal; font-size:.75rem; color:var(--muted); font-weight:600; }
+    @media (max-width:900px) { .hv-stage { height:560px; max-width:380px; } .hv-main { width:270px; } .hv-picto { width:120px; height:120px; } .hv-badge { right:-4px; top:-8px; padding:6px 12px; } .hv-badge span { font-size:1.2rem; } .hv-trace { left:-4px; } .hv-prog { right:-4px; } }
+    @media (prefers-reduced-motion: reduce) { .hv-trace, .hv-badge, .hv-prog { animation:none; } }
+    .shelf-pics.thumbs { margin-top:6px; }
+    .shelf-pics.thumbs:not(:has(img:not([hidden]))) { display:none; }
+    .note-row .shelf-pics img, .cur-body .shelf-pics img { width:40px; height:40px; object-fit:contain; background:#fff; }
+    .nav-item { position:relative; }
+    .nav-badge { position:absolute; top:6px; right:10px; min-width:20px; height:20px; padding:0 6px; border-radius:999px; background:#ef4444; color:#fff; font:800 .75rem/20px var(--font); text-align:center; }
+    .new-pill { display:inline-block; margin-left:8px; padding:2px 10px; border-radius:999px; background:#ef4444; color:#fff; font-size:.75rem; font-weight:800; vertical-align:middle; }
+    .trace-board.shake { animation:tshake .45s; }
+    @keyframes tshake { 0%,100%{transform:translateX(0)} 20%{transform:translateX(-8px)} 40%{transform:translateX(8px)} 60%{transform:translateX(-5px)} 80%{transform:translateX(5px)} }
+    .fx-back { position:fixed; inset:0; z-index:100000; background:rgba(15,23,42,.55); display:flex; align-items:center; justify-content:center; padding:20px; overflow:hidden; }
+    .fx-card { position:relative; background:var(--surface); color:var(--ink); border-radius:28px; padding:30px 26px 26px; max-width:420px; width:100%; text-align:center; box-shadow:0 24px 60px rgba(0,0,0,.35); animation:fxpop .35s var(--ease) both; }
+    @keyframes fxpop { from{transform:scale(.85);opacity:0} to{transform:none;opacity:1} }
+    .fx-emoji { font-size:4.2rem; line-height:1; margin-bottom:8px; }
+    .fx-card h2 { font-size:1.75rem; font-weight:800; margin-bottom:6px; }
+    .fx-sub { color:var(--ink2); margin-bottom:14px; font-size:1.05rem; }
+    .fx-rows { display:grid; gap:8px; margin:14px 0 20px; text-align:left; }
+    .fx-row { display:flex; align-items:center; gap:12px; background:var(--soft); border-radius:14px; padding:10px 14px; font-weight:700; }
+    .fx-row span:first-child { font-size:1.4rem; }
+    .fx-btns { display:flex; flex-direction:column; gap:10px; }
+    .fx-bar { height:10px; border-radius:999px; background:var(--soft); overflow:hidden; margin:6px 0 18px; }
+    .fx-bar > i { display:block; height:100%; background:linear-gradient(90deg,#fbbf24,#f59e0b); border-radius:999px; }
+    .confetti { position:absolute; top:-12px; width:10px; height:14px; border-radius:3px; animation:confall 2.4s ease-in forwards; pointer-events:none; }
+    @keyframes confall { to { transform:translateY(105vh) rotate(540deg); opacity:.9; } }
+    .sw.on { background:var(--yellow-light); border-radius:6px; box-shadow:0 0 0 2px var(--yellow-light); }
+    #mic-btn { margin:10px auto 0; display:flex; }
+    #mic-btn.listening { background:#ef4444; color:#fff; border-color:#ef4444; animation:micpulse 1.1s infinite; }
+    @keyframes micpulse { 0%,100%{box-shadow:0 0 0 0 rgba(239,68,68,.5)} 50%{box-shadow:0 0 0 10px rgba(239,68,68,0)} }
+    .streak-badge.bump { animation:streakbump .8s var(--ease); }
+    @keyframes streakbump { 0%{transform:scale(1)} 40%{transform:scale(1.25) rotate(-3deg)} 100%{transform:scale(1)} }
+    @media (prefers-reduced-motion: reduce) { .confetti, .trace-board.shake, #mic-btn.listening, .streak-badge.bump { animation:none; } }
     .lang-switch { display:inline-flex; border:2px solid var(--line); border-radius:999px; padding:2px; background:var(--surface); }
     .lang-switch button { min-width:44px; min-height:36px; padding:4px 12px; border-radius:999px; font-weight:700; font-size:0.875rem; color:var(--ink2); }
     .lang-switch button.active { background:var(--blue); color:#fff; }
@@ -1084,16 +1159,27 @@
             <p class="hero-signin">Already have an account? <button class="text-link" onclick="showScreen('login')">Sign in</button></p>
           </div>
         </div>
-        <div class="hero-illustration">
-          <div class="bed-card">
-            <svg class="en-only" viewBox="0 0 420 220" role="img" aria-labelledby="bed-title">
-              <title id="bed-title">The word bed drawn as a bed: the tall line of b is the headboard and the tall line of d is the footboard.</title>
-              <text x="210" y="190" text-anchor="middle" font-family="Lexend, Arial, sans-serif" font-weight="700" font-size="150" fill="#0f172a">bed</text>
-              <rect x="132" y="90" width="176" height="18" rx="9" fill="#93c5fd"/>
-              <rect x="136" y="72" width="48" height="18" rx="9" fill="#fcd34d"/>
-            </svg>
-            <p class="bed-caption en-only"><b>b</b> is the head of the bed, <b>d</b> is the foot.</p>
-            <button class="btn light" onclick="speakText(t(content().trick), 0.8)"><svg class="ico"><use href="#i-volume"/></svg> Listen</button>
+        <div class="hero-illustration" aria-hidden="false">
+          <div class="hv-stage">
+            <div class="hv-card hv-main">
+              <div class="hv-top"><span class="hv-tag">Today's lesson</span><span class="hv-stars">⭐ 14</span></div>
+              <img id="hero-picto" class="hv-picto" alt="" width="150" height="150">
+              <div class="hv-word" data-no-i18n>
+                <span class="en-only"><i>b</i><i>a</i><i>l</i><i>l</i></span>
+                <span class="ms-only"><i>b</i><i>o</i><i>l</i><i>a</i></span>
+              </div>
+              <div class="hv-syl" data-no-i18n>
+                <span class="en-only"><b>ba</b><b>ll</b></span>
+                <span class="ms-only"><b>bo</b><b>la</b></span>
+              </div>
+              <button class="btn light" onclick="speakText(LANG==='ms'?'bola':'ball', 0.8)"><svg class="ico"><use href="#i-volume"/></svg> Listen</button>
+            </div>
+            <div class="hv-card hv-trace">
+              <div class="hv-trace-row" data-no-i18n><span class="done">b ✓</span><span>d</span><span>p</span><span>g</span></div>
+              <div class="hv-trace-note">Trace it · earn stars</div>
+            </div>
+            <div class="hv-card hv-badge"><span>⭐⭐</span><b>+2 ⭐</b></div>
+            <div class="hv-card hv-prog"><span class="hv-ring"><svg viewBox="0 0 36 36"><circle cx="18" cy="18" r="15" fill="none" stroke="#dbe5ff" stroke-width="5"/><circle cx="18" cy="18" r="15" fill="none" stroke="#16a34a" stroke-width="5" stroke-linecap="round" stroke-dasharray="94" stroke-dashoffset="26" transform="rotate(-90 18 18)"/></svg></span><span class="hv-prog-t"><b>72%</b><em>This week</em></span></div>
           </div>
         </div>
       </section>
@@ -1370,7 +1456,7 @@
         <nav class="side-nav" id="sidebar-nav">
           <button class="nav-item active" data-page="dashboard" data-role="student" onclick="showPage('dashboard')"><svg class="ico" aria-hidden="true"><use href="#i-home"/></svg><span class="nav-label">Home</span></button>
           <button class="nav-item" data-page="teacher" data-role="teacher" onclick="showPage('teacher')"><svg class="ico" aria-hidden="true"><use href="#i-chart"/></svg><span class="nav-label">Class dashboard</span></button>
-          <button class="nav-item" data-page="parent" data-role="parent" onclick="showPage('parent')"><svg class="ico" aria-hidden="true"><use href="#i-heart"/></svg><span class="nav-label">My child</span></button>
+          <button class="nav-item" data-page="parent" data-role="parent" onclick="showPage('parent')"><svg class="ico" aria-hidden="true"><use href="#i-heart"/></svg><span class="nav-label">My child</span><span class="nav-badge" id="parent-badge" hidden data-i18n-skip></span></button>
           <button class="nav-item" data-page="reading" data-role="student,parent" onclick="showPage('reading')" style="position:relative"><svg class="ico" aria-hidden="true"><use href="#i-book"/></svg><span class="nav-label">Today's lesson</span><span id="sidebar-new-badge" style="display:none;position:absolute;right:12px;top:50%;transform:translateY(-50%);background:#dc2626;color:#fff;font-size:0.625rem;font-weight:800;padding:2px 6px;border-radius:20px">NEW</span></button>
           <button class="nav-item" data-page="tracing" data-role="student" onclick="showPage('tracing')"><svg class="ico" aria-hidden="true"><use href="#i-pencil"/></svg><span class="nav-label">Trace letters</span></button>
           <button class="nav-item" data-page="notes" data-role="teacher,parent" onclick="showPage('notes')"><svg class="ico" aria-hidden="true"><use href="#i-notes"/></svg><span class="nav-label">Simplify notes</span></button>
@@ -1389,7 +1475,7 @@
               <div class="avatar lg">A</div>
               <div class="dash-greeting-text"><h2>Hello, Aisyah!</h2><p>Ready for today's words?</p></div>
             </div>
-            <div class="streak-badge"><svg class="ico" aria-hidden="true"><use href="#i-flame"/></svg> 7 days in a row</div>
+            <div class="streak-badge" id="streak-badge"><svg class="ico" aria-hidden="true"><use href="#i-flame"/></svg> <span id="streak-text" data-i18n-skip>2 days in a row</span></div>
           </div>
           <div class="dash-body">
             <div class="dash-main">
@@ -1398,6 +1484,7 @@
                 <div style="flex:1;min-width:0">
                   <div class="new-note-label" id="home-new-note-from">New from your teacher</div>
                   <div class="new-note-title" id="home-new-note-title"></div>
+                  <div class="shelf-pics thumbs" id="home-new-note-pics"></div>
                 </div>
                 <button class="btn reward lg" id="home-new-note-btn">Read it</button>
               </div>
@@ -1440,6 +1527,7 @@
                   <div class="progress-stat"><span class="progress-stat-label">Lessons done</span><span class="progress-stat-value">2 / 10</span></div>
                   <div class="progress-stat"><span class="progress-stat-label">Words Read</span><span class="progress-stat-value">15</span></div>
                                     <div class="progress-stat"><span class="progress-stat-label">Stars</span><span class="progress-stat-value" style="color:#b45309;display:inline-flex;align-items:center;gap:4px"><svg class="ico fill" aria-hidden="true"><use href="#i-star"/></svg> <span id="star-count" aria-live="polite">12</span></span></div>
+                  <div class="progress-stat"><span class="progress-stat-label">Level</span><span class="progress-stat-value" id="level-name" data-i18n-skip style="font-size:1.05rem"></span></div>
                 </div>
               </div>
             </div>
@@ -1468,6 +1556,7 @@
           <div class="reading-top-bar">
             <button class="back-btn" onclick="goHome()">← Back</button>
             <span class="word-counter">Word <span id="r-idx">1</span> of <span id="r-total">5</span></span>
+            <span class="read-chip" id="read-chip" role="status" aria-live="polite"></span>
             <div class="reading-controls">
               <label class="setting-label" for="reading-speed" style="align-self:center">Voice speed</label>
               <select class="select-control audio-speed-select" id="reading-speed" onchange="setAudioSpeed(this.value)"><option value="slow">Slow</option><option value="normal" selected>Normal</option><option value="fast">Fast</option></select>
@@ -1476,6 +1565,7 @@
           <div class="reading-card-main">
             <div class="word-display">
               <button class="speaker-btn" onclick="speakText(words[rIdx].word, 0.8)" aria-label="Hear the word"><svg class="ico" aria-hidden="true"><use href="#i-volume"/></svg></button>
+              <div class="read-badge" id="r-badge" hidden><svg class="ico fill" aria-hidden="true"><use href="#i-star"/></svg> <span data-i18n-skip></span></div>
               <div class="word-text" id="r-word" aria-live="polite">cat</div>
               <div class="word-dots" id="r-dots"></div>
               <div class="letter-tiles" id="r-tiles"></div>
@@ -1503,8 +1593,10 @@
             <button class="reading-mode-btn" data-mode="help" onclick="setMode(this)"><svg class="ico" aria-hidden="true"><use href="#i-help"/></svg>I need help</button>
           </div>
           <div class="reading-help" id="reading-help" role="status" aria-live="polite"></div>
+          <button class="btn outline" id="mic-btn" onclick="listenWord()" hidden><svg class="ico" aria-hidden="true"><use href="#i-mic"/></svg> <span id="mic-label" data-i18n-skip>Say the word</span></button>
           <div class="reading-nav">
             <button class="btn light" id="r-prev" onclick="prevWord()" disabled>← Previous</button>
+            <button class="btn reward" id="r-done" onclick="markRead()">I read it ✓</button>
             <button class="btn" id="r-next" onclick="nextWord()">Next →</button>
           </div>
         </div>
@@ -1520,6 +1612,7 @@
           <div class="tips-box" id="tips-box"><ul><li>Say the sound as you trace.</li><li>Go over the dotted letter with your finger or mouse.</li><li>Press Check when you finish. Clear lets you try again.</li></ul></div>
           <div class="tracing-layout">
             <div>
+              <div class="trace-progress" id="trace-progress" role="status" aria-live="polite"></div>
               <div class="trace-board">
                 <canvas id="t-guide" class="trace-guide-canvas" aria-hidden="true"></canvas>
                 <canvas id="traceCanvas" class="trace-canvas" role="img" aria-label="Drawing area. Trace the letter b."></canvas>
@@ -1909,6 +2002,7 @@
               <h3>Screen</h3>
               <div class="setting-row"><span class="setting-label" id="lbl-pictures">Show the picture straight away</span><button class="toggle" role="switch" aria-checked="false" aria-labelledby="lbl-pictures" data-setting="autopicture" onclick="toggleSetting(this)"></button></div>
               <div class="setting-row"><span class="setting-label" id="lbl-calm">Fewer distractions (hide stars and streaks)</span><button class="toggle" role="switch" aria-checked="false" aria-labelledby="lbl-calm" data-setting="calm" onclick="toggleSetting(this)"></button></div>
+              <div class="setting-row"><span class="setting-label" id="lbl-sound">Reward sounds (chimes and cheers)</span><button class="toggle" role="switch" aria-checked="true" aria-labelledby="lbl-sound" data-setting="sound" onclick="toggleSetting(this)"></button></div>
               <div class="setting-row"><span class="setting-label" id="lbl-bigbuttons">Bigger buttons</span><button class="toggle" role="switch" aria-checked="false" aria-labelledby="lbl-bigbuttons" data-setting="bigbuttons" onclick="toggleSetting(this)"></button></div>
               <div class="setting-row"><span class="setting-label" id="lbl-motion">Animations</span><button class="toggle active" role="switch" aria-checked="true" aria-labelledby="lbl-motion" data-setting="motion" onclick="toggleSetting(this)"></button></div>
             </div>
@@ -2419,6 +2513,18 @@
       'Saved': 'Disimpan',
       'Settings reset': 'Tetapan dikembalikan kepada asal',
       'Choose a lesson': 'Pilih pelajaran', 'Start this lesson': 'Mulakan pelajaran ini',
+      '{n} of {total} read': '{n} daripada {total} dibaca', 'Read!': 'Sudah dibaca!', 'Read ✓': 'Sudah dibaca ✓', 'I read it ✓': 'Saya sudah baca ✓',
+      'Well done! +1 star': 'Syabas! +1 bintang', 'Well done! You read every word.': 'Syabas! Kamu sudah baca semua perkataan.',
+      '{n} of {total} traced': '{n} daripada {total} disurih', 'Traced': 'Sudah disurih', 'Well done!': 'Syabas!', 'Well done! That is {l}.': 'Syabas! Itu huruf {l}.',
+      "Today's lesson": 'Pelajaran hari ini', 'Trace it · earn stars': 'Surih & dapat bintang',
+"Reward sounds (chimes and cheers)": 'Bunyi ganjaran (loceng dan sorakan)', 'Level {n}': 'Tahap {n}', 'Level {n}!': 'Tahap {n}!', 'Sprout': 'Tunas', 'Explorer': 'Peneroka', 'Reader': 'Pembaca', 'Star Reader': 'Pembaca Bintang', 'Reading Champion': 'Juara Membaca',
+      'New title: {name}': 'Gelaran baharu: {name}', '{n} more stars to be a {name}.': 'Lagi {n} bintang untuk jadi {name}.', 'You reached the top level!': 'Kamu sudah sampai tahap tertinggi!', 'Keep going': 'Teruskan',
+      'Lesson complete!': 'Pelajaran selesai!', 'Tracing complete!': 'Surihan selesai!', 'Great job today!': 'Syabas hari ini!', '{n} words read': '{n} perkataan dibaca', '{n} letters traced': '{n} huruf disurih', '{n} stars earned': '{n} bintang diperoleh', 'Back to Home': 'Kembali ke Utama', 'Trace letters next': 'Surih huruf seterusnya', 'Read words next': 'Baca perkataan seterusnya',
+      '1 day in a row': '1 hari berturut-turut', '{n} days in a row': '{n} hari berturut-turut', '🔥 {n} days in a row! Come back tomorrow.': '🔥 {n} hari berturut-turut! Datang lagi esok.',
+      'Tip: tap Hear to listen, then follow the dashed line slowly.': 'Petua: tekan Dengar, kemudian ikut garisan putus-putus perlahan-lahan.',
+      'Say the word': 'Sebut perkataan', 'Listening… tap to stop': 'Mendengar… tekan untuk berhenti', 'Tap the microphone and read the word out loud.': 'Tekan mikrofon dan baca perkataan dengan kuat.',
+      'Great reading! You said "{w}".': 'Bacaan yang bagus! Kamu sebut "{w}".', 'I heard "{heard}". Try again, you can do it!': 'Saya dengar "{heard}". Cuba lagi, kamu boleh!', 'Please allow the microphone to read out loud.': 'Sila benarkan mikrofon untuk membaca dengan kuat.', 'I did not hear anything. Try again.': 'Saya tidak dengar apa-apa. Cuba lagi.',
+      'Reply sent ✓': 'Balasan dihantar ✓', 'Lesson assigned ✓': 'Pelajaran ditugaskan ✓', 'Assignment removed': 'Tugasan dibuang', 'Lesson added ✓': 'Pelajaran ditambah ✓', 'Message sent ✓': 'Mesej dihantar ✓', 'Note sent ✓': 'Nota dihantar ✓', '{n} new': '{n} baharu',
       // Teacher dashboard
       'You': 'Anda', 'Reply': 'Balas', 'Write a reply': 'Tulis balasan', 'Parent of {name}': 'Ibu bapa {name}',
       'New reply from a parent': 'Balasan baharu daripada ibu bapa', 'Read reply': 'Baca balasan',
@@ -2614,6 +2720,7 @@
 
     // ─── Swap static page text between English and Malay ───
     const ATTRS = ['placeholder', 'aria-label', 'title', 'alt'];
+    function refreshDynamicLabels() { try { refreshStreakUI(); refreshLevelUI(); updateParentBadge(); } catch (e) {} }
     function translateStatic(root) {
       const w = document.createTreeWalker(root || document.body, NodeFilter.SHOW_TEXT);
       let n;
@@ -2655,7 +2762,10 @@
     }
 
 
+    let curPageName = '';
     function showPage(name) {
+      if (curPageName === 'parent' && name !== 'parent') { try { markParentSeen(); } catch (e) {} }
+      curPageName = name;
       document.querySelectorAll('.page-content').forEach(p => p.style.display = 'none');
       document.getElementById('page-' + name).style.display = 'block';
       // Update sidebar active
@@ -2671,6 +2781,7 @@
       if (name === 'parent') renderParent();
       if (name === 'teacher') { renderTeacherDash(); teacherTab('overview'); }
       if (name === 'notes') showNotesLibrary();
+      try { updateParentBadge(); if (name === 'dashboard') { refreshStreakUI(); refreshLevelUI(); } } catch (e) {}
     }
 
 
@@ -2851,7 +2962,7 @@
       const box = document.getElementById('lesson-shelf'); if (!box) return;
       box.innerHTML = lessonSets().map(l => {
         const on = l.id === dailyLesson().id;
-        return `<div class="shelf-card${on ? ' on' : ''}"><div class="shelf-pics">${l.words.slice(0, 4).map(w => BUILTIN_PICTOS[pictoKey(w)] ? `<img src="${BUILTIN_PICTOS[pictoKey(w)]}" alt="">` : '').join('')}</div>
+        return `<div class="shelf-card${on ? ' on' : ''}"><div class="shelf-pics">${thumbImgs(l.words, 4)}</div>
           <div class="shelf-title">${escapeHtml(l.title)}</div><div class="shelf-blurb">${escapeHtml(l.blurb)}</div>
           <button type="button" class="btn sm${on ? '' : ' outline'}" onclick="chooseLessonSet('${l.id}', true)">${t(on ? 'Continue lesson' : 'Start this lesson')}</button></div>`;
       }).join('');
@@ -2864,7 +2975,7 @@
       const note = noteId ? loadNotes().find(n => n.id === noteId) : null;
       currentNote = note || null;
       words = note ? note.words : dailyLesson().words;
-      rIdx = 0;
+      rIdx = 0; readDone = new Set();
       document.getElementById('lesson-title').textContent = note ? note.title : dailyLesson().title;
       document.getElementById('lesson-badge-text').textContent = note ? t('From {from}', { from: note.from }) : t("Today's lesson");
       document.getElementById('lesson-meta').textContent = note ? t('{n} words · a short story', { n: note.words.length }) : t('About 8 minutes · 3 activities');
@@ -2896,6 +3007,7 @@
       next.disabled = false;
       next.textContent = t(rIdx === words.length - 1 ? 'Finish ✓' : 'Next →');
       setHelp('');
+      refreshReadUI();
     }
 
 
@@ -2905,6 +3017,41 @@
     const PICTO_API = 'https://api.arasaac.org/api/pictograms/en/search/';
     const PICTO_IMG = id => `https://static.arasaac.org/pictograms/${id}/${id}_500.png`;
     const pictoCache = {};      // word -> [ids]
+    // ── Small pictures on lesson cards and notes: built-in drawing first, ARASAAC online for any other word ──
+    let thumbCache = {}; try { thumbCache = JSON.parse(localStorage.getItem('dla-thumbs') || '{}'); } catch (e) {}
+    function wordObjFor(w) {
+      if (typeof w !== 'string') return w;
+      const hit = lessonSets().reduce((f, l) => f || l.words.find(x => x.word === w), null);
+      return hit || { word: w };
+    }
+    function thumbImgs(items, max) {
+      return (items || []).slice(0, max || 4).map(w => {
+        const o = wordObjFor(w), key = pictoKey(o);
+        if (BUILTIN_PICTOS[key]) return `<img src="${BUILTIN_PICTOS[key]}" alt="">`;
+        const q = o.pictoQuery || o.picto || o.word;
+        return `<img class="thumb-ol" data-q="${escapeHtml(q)}" data-l="${(o.pictoQuery || o.picto) ? 'en' : (LANG === 'ms' ? 'ms,en' : 'en')}" hidden alt="">`;
+      }).join('');
+    }
+    async function thumbId(q, langs) {
+      for (const lg of langs.split(',')) {
+        const k = lg + ':' + q.toLowerCase(); if (thumbCache[k]) return thumbCache[k];
+        try {
+          const r = await fetch('https://api.arasaac.org/api/pictograms/' + lg + '/search/' + encodeURIComponent(q));
+          if (!r.ok) continue;
+          const d = await r.json(), id = Array.isArray(d) && d[0] && d[0]._id;
+          if (id) { thumbCache[k] = id; try { localStorage.setItem('dla-thumbs', JSON.stringify(thumbCache)); } catch (e) {} return id; }
+        } catch (e) { return 0; }
+      }
+      return 0;
+    }
+    function hydrateThumbs() {
+      document.querySelectorAll('img.thumb-ol:not([data-done])').forEach(async im => {
+        im.dataset.done = '1';
+        const id = await thumbId(im.dataset.q, im.dataset.l); if (!id) return;
+        im.onload = () => { im.hidden = false; }; im.src = PICTO_IMG(id);
+      });
+    }
+    (function () { let tm = null; new MutationObserver(() => { clearTimeout(tm); tm = setTimeout(hydrateThumbs, 120); }).observe(document.body, { childList: true, subtree: true }); })();
     let pictoIndex = 0;
     let pictoQuiet = false;
 
@@ -2978,6 +3125,7 @@
       stone: 'data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20200%20200%22%3E%3Crect%20width%3D%22200%22%20height%3D%22200%22%20rx%3D%2224%22%20fill%3D%22%23ffffff%22%2F%3E%3Cpath%20d%3D%22M34%20140%20C26%20112%2044%2082%2074%2070%20C98%2056%20132%2060%20152%2078%20C174%2096%20178%20126%20164%20144%20C140%20156%2070%20158%2034%20140%20Z%22%20fill%3D%22%239ca3af%22%20stroke%3D%22%231f2937%22%20stroke-width%3D%226%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%0A%3Cpath%20d%3D%22M78%2096%20C90%2090%20104%2092%20112%20100%20M126%20120%20C136%20116%20146%20118%20150%20124%22%20stroke%3D%22%234b5563%22%20stroke-width%3D%224%22%20fill%3D%22none%22%20stroke-linecap%3D%22round%22%2F%3E%3C%2Fsvg%3E',
       van: 'data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20200%20200%22%3E%3Crect%20width%3D%22200%22%20height%3D%22200%22%20rx%3D%2224%22%20fill%3D%22%23ffffff%22%2F%3E%3Cpath%20d%3D%22M20%2070%20Q20%2054%2036%2054%20H130%20Q146%2054%20156%2070%20L176%2096%20Q182%20102%20182%20112%20V138%20H20%20Z%22%20fill%3D%22%2360a5fa%22%20stroke%3D%22%231f2937%22%20stroke-width%3D%226%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%0A%3Cpath%20d%3D%22M40%2070%20H84%20V98%20H40%20Z%20M98%2070%20H136%20L154%2098%20H98%20Z%22%20fill%3D%22%23e0f2fe%22%20stroke%3D%22%231f2937%22%20stroke-width%3D%226%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%0A%3Cpath%20d%3D%22M20%20116%20H182%22%20stroke%3D%22%231f2937%22%20stroke-width%3D%226%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20fill%3D%22none%22%2F%3E%0A%3Ccircle%20cx%3D%2258%22%20cy%3D%22140%22%20r%3D%2217%22%20fill%3D%22%23374151%22%20stroke%3D%22%231f2937%22%20stroke-width%3D%226%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%3Ccircle%20cx%3D%22148%22%20cy%3D%22140%22%20r%3D%2217%22%20fill%3D%22%23374151%22%20stroke%3D%22%231f2937%22%20stroke-width%3D%226%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%0A%3Ccircle%20cx%3D%2258%22%20cy%3D%22140%22%20r%3D%225%22%20fill%3D%22%23d1d5db%22%2F%3E%3Ccircle%20cx%3D%22148%22%20cy%3D%22140%22%20r%3D%225%22%20fill%3D%22%23d1d5db%22%2F%3E%3C%2Fsvg%3E'
     };
+    (function(){ const h=document.getElementById('hero-picto'); if(h && BUILTIN_PICTOS.ball) h.src=BUILTIN_PICTOS.ball; })();
 
     function showBuiltinPictogram(quiet) {
       const w = words[rIdx];
@@ -3045,8 +3193,9 @@
     }
 
     function nextWord() {
-      if (rIdx < words.length - 1) { rIdx++; updateReading(); addStar(); }
-      else { addStar(); const msg = t('Well done! You read all {n} words.', { n: words.length }); showSettingToast(msg); speakText(msg); rIdx = 0; goHome(); }
+      const was = readDone.has(rIdx); if (!was) markRead();
+      if (rIdx < words.length - 1) { rIdx++; updateReading(); if (!was) setHelp(t('Well done! +1 star')); }
+      else { const msg = t('Well done! You read all {n} words.', { n: words.length }); showSettingToast(msg); speakText(msg); const nW = words.length; rIdx = 0; readDone = new Set(); updateReading(); setTimeout(() => fxEnqueue(() => showSummary({ title: t('Lesson complete!'), icon: '📖', line: t('{n} words read', { n: nW }), next: currentLoginRole === 'student' ? { page: 'tracing', label: t('Trace letters next') } : null })), 900); }
     }
     function prevWord() { if (rIdx > 0) { rIdx--; updateReading(); } }
 
@@ -3074,14 +3223,41 @@
       btn.classList.add('active');
       btn.setAttribute('aria-pressed', 'true');
       readingMode = btn.dataset.mode;
+      const micB = document.getElementById('mic-btn'); if (micB) micB.hidden = !(readingMode === 'myself' && SR_CLASS);
       const w = words[rIdx];
       if (readingMode === 'listen') { setHelp(''); playAudio(); }
       else if (readingMode === 'with') { setHelp(t('Say each sound with me, then say the whole word.')); soundOut(0.7); }
-      else if (readingMode === 'myself') { window.speechSynthesis && window.speechSynthesis.cancel(); setHelp(t('Read the word out loud. Then tap the speaker to check.')); }
+      else if (readingMode === 'myself') { window.speechSynthesis && window.speechSynthesis.cancel(); setHelp(SR_CLASS ? t('Tap the microphone and read the word out loud.') : t('Read the word out loud. Then tap the speaker to check.')); }
       else if (readingMode === 'help') {
         setHelp(t("Let's sound it out: {parts}. Tap each letter to hear it again.", { parts: w.letters.join(' - ') }));
         speakText(`${t("Let's sound it out together.")} ${w.letters.map(l => LANG === 'ms' ? l : (letterSounds[l] || l)).join('... ')}... ${w.word}. ${w.sentence}`, 0.7);
       }
+    }
+
+    // ─── Say the word: the browser listens and tells the child how it went ───
+    const SR_CLASS = window.SpeechRecognition || window.webkitSpeechRecognition || null;
+    let micRec = null;
+    function micReset() { const b = document.getElementById('mic-btn'); if (b) { b.classList.remove('listening'); document.getElementById('mic-label').textContent = t('Say the word'); } }
+    function listenWord() {
+      if (!SR_CLASS) return;
+      if (micRec) { try { micRec.stop(); } catch (e) {} return; }
+      stopSpeech();
+      const w = words[rIdx], b = document.getElementById('mic-btn');
+      const norm = (x) => String(x).toLowerCase().normalize('NFC').replace(/[^\p{L}\p{N}\s]/gu, '').trim();
+      const rec = new SR_CLASS(); micRec = rec; rec.lang = LANG === 'ms' ? 'ms-MY' : 'en-US'; rec.maxAlternatives = 5; rec.interimResults = false;
+      b.classList.add('listening'); document.getElementById('mic-label').textContent = t('Listening… tap to stop');
+      let got = false;
+      rec.onresult = (e) => {
+        got = true;
+        const alts = [...e.results[0]].map(a => norm(a.transcript)), target = norm(w.word);
+        const ok = alts.some(a => a === target || a.split(/\s+/).includes(target));
+        const heard = alts[0] || '';
+        if (ok) { markRead(); setHelp(t('Great reading! You said "{w}".', { w: w.word })); }
+        else { playRetrySound(); setHelp(t('I heard "{heard}". Try again, you can do it!', { heard })); }
+      };
+      rec.onerror = (e) => { got = true; setHelp(e.error === 'not-allowed' || e.error === 'service-not-allowed' ? t('Please allow the microphone to read out loud.') : t('I did not hear anything. Try again.')); };
+      rec.onend = () => { micRec = null; micReset(); if (!got) setHelp(t('I did not hear anything. Try again.')); };
+      try { rec.start(); } catch (e) { micRec = null; micReset(); }
     }
 
     function readStory() {
@@ -3112,8 +3288,19 @@
     const audioSlug = (txt) => String(txt).toLowerCase().normalize('NFC').replace(/[^\p{L}\p{N}\s-]/gu, '').trim().replace(/\s+/g, '-');
     let audioManifest = { ms: new Set(), en: new Set() }, activeClip = null;
     fetch('audio/manifest.json').then(r => r.ok ? r.json() : null).then(m => { if (m) audioManifest = { ms: new Set(m.ms || []), en: new Set(m.en || []) }; }).catch(() => {});
-    function stopSpeech() { try { window.speechSynthesis.cancel(); } catch (e) {} if (activeClip) { activeClip.pause(); activeClip = null; } hideAudioWave(); }
+    function stopSpeech() { try { window.speechSynthesis.cancel(); } catch (e) {} if (activeClip) { activeClip.pause(); activeClip = null; } clearSentenceHL(); hideAudioWave(); }
+    let hlTimers = [];
+    function clearSentenceHL() { hlTimers.forEach(clearTimeout); hlTimers = []; const el = document.getElementById('r-sentence'); if (el && el.dataset.plain) { el.textContent = el.dataset.plain; delete el.dataset.plain; } }
+    function highlightSentence(text, rate) {
+      const el = document.getElementById('r-sentence'); if (!el || !settings.highlight || el.textContent.trim() !== String(text).trim()) return;
+      const ws = el.textContent.trim().split(/\s+/); el.dataset.plain = el.textContent;
+      el.innerHTML = ws.map((w, i) => '<span class="sw" data-i="' + i + '">' + escapeHtml(w) + '</span>').join(' ');
+      const perChar = 80 / (rate * audioSpeedFactor()); let at = 250; const total = ws.join(' ').length;
+      ws.forEach((w, i) => { hlTimers.push(setTimeout(() => { el.querySelectorAll('.sw').forEach(x => x.classList.remove('on')); const n = el.querySelector('.sw[data-i="' + i + '"]'); if (n) n.classList.add('on'); }, at)); at += (w.length + 1) * perChar; });
+      hlTimers.push(setTimeout(clearSentenceHL, at + 400));
+    }
     function speakText(text, rate = 0.9, pitch = 1.0) {
+      clearSentenceHL(); highlightSentence(text, rate);
       const slug = audioSlug(text);
       if (slug && audioManifest[LANG] && audioManifest[LANG].has(slug)) {
         try { window.speechSynthesis.cancel(); } catch (e) {}
@@ -3186,9 +3373,129 @@
 
     // ─── Stars ───
     let stars = 12;
+    // ─── Reward sounds (Web Audio, no files). Can be switched off in Settings; also silent in "fewer distractions" mode ───
+    let _actx = null, _starRun = 0, _starRunAt = 0;
+    function sfxCtx() {
+      if (settings.sound === false || settings.calm) return null;
+      try {
+        const AC = window.AudioContext || window.webkitAudioContext; if (!AC) return null;
+        _actx = _actx || new AC(); if (_actx.state === 'suspended') _actx.resume(); return _actx;
+      } catch (e) { return null; }
+    }
+    function sfxNote(c, f, at, dur, vol, type) {
+      const o = c.createOscillator(), g = c.createGain(), t0 = c.currentTime + at;
+      o.type = type || 'sine'; o.frequency.value = f;
+      g.gain.setValueAtTime(0.0001, t0); g.gain.exponentialRampToValueAtTime(vol, t0 + 0.015); g.gain.exponentialRampToValueAtTime(0.0001, t0 + dur);
+      o.connect(g); g.connect(c.destination); o.start(t0); o.stop(t0 + dur + 0.05);
+    }
+    function playStarSound() {
+      const c = sfxCtx(); if (!c) return;
+      const tNow = Date.now(); _starRun = (tNow - _starRunAt < 700) ? _starRun + 1 : 0; _starRunAt = tNow;
+      const base = 784 * Math.pow(2, Math.min(_starRun, 3) * 2 / 12);
+      sfxNote(c, base, 0, 0.45, 0.18); sfxNote(c, base * 1.5, 0.09, 0.45, 0.18);
+    }
+    function playRetrySound() { const c = sfxCtx(); if (!c) return; sfxNote(c, 392, 0, 0.3, 0.12); sfxNote(c, 330, 0.16, 0.4, 0.12); }   // soft, falling, never harsh
+    function playLevelSound() { const c = sfxCtx(); if (!c) return; [523, 659, 784, 1047, 1319].forEach((f, i) => sfxNote(c, f, i * 0.11, 0.6, 0.16, 'triangle')); }
+    function playDoneSound() { const c = sfxCtx(); if (!c) return; [659, 784, 1047].forEach((f, i) => sfxNote(c, f, i * 0.12, 0.5, 0.15, 'triangle')); }
+
+    // ─── Levels ───
+    const LEVELS = [
+      { at: 0, name: 'Sprout', emoji: '🌱' }, { at: 15, name: 'Explorer', emoji: '🧭' }, { at: 25, name: 'Reader', emoji: '📖' },
+      { at: 50, name: 'Star Reader', emoji: '🌟' }, { at: 100, name: 'Reading Champion', emoji: '🏆' } ];
+    const levelFor = (n) => LEVELS.reduce((k, l, i) => n >= l.at ? i : k, 0);
+    function refreshLevelUI() {
+      const e = document.getElementById('level-name'); if (!e) return;
+      const i = levelFor(stars); e.textContent = LEVELS[i].emoji + ' ' + t('Level {n}', { n: i + 1 }) + ' · ' + t(LEVELS[i].name);
+    }
+
+    // ─── Daily streak (days in a row with at least one star) ───
+    const STREAK_KEY = 'dla-streak';
+    const dayKey = (d) => d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
+    function readStreak() {
+      const y = new Date(); y.setDate(y.getDate() - 1);
+      let r = null; try { r = JSON.parse(localStorage.getItem(STREAK_KEY) || 'null'); } catch (e) {}
+      return r && r.last ? r : { last: dayKey(y), n: 2 };   // sample start so the demo shows a streak
+    }
+    function streakNow() { const r = readStreak(), y = new Date(); y.setDate(y.getDate() - 1); return (r.last === dayKey(new Date()) || r.last === dayKey(y)) ? r.n : 0; }
+    function refreshStreakUI() {
+      const e = document.getElementById('streak-text'); if (!e) return; const n = streakNow();
+      e.textContent = n === 1 ? t('1 day in a row') : t('{n} days in a row', { n });
+    }
+    function bumpStreak() {
+      const r = readStreak(), today = dayKey(new Date()); if (r.last === today) return;
+      const y = new Date(); y.setDate(y.getDate() - 1);
+      const n = r.last === dayKey(y) ? r.n + 1 : 1;
+      try { localStorage.setItem(STREAK_KEY, JSON.stringify({ last: today, n })); } catch (e) {}
+      refreshStreakUI();
+      const b = document.getElementById('streak-badge'); if (b) { b.classList.remove('bump'); void b.offsetWidth; b.classList.add('bump'); }
+      if (!settings.calm) setTimeout(() => { if (!fxOpen) showSettingToast(t('🔥 {n} days in a row! Come back tomorrow.', { n })); }, 900);
+    }
+
+    // ─── Pop-ups: level up and lesson summary (queued so they never stack) ───
+    let fxOpen = null, fxQ = [], fxPrevFocus = null;
+    function fxEnqueue(fn) { if (fxOpen) fxQ.push(fn); else fn(); }
+    function fxShow(inner, confetti) {
+      const back = document.createElement('div'); back.className = 'fx-back'; back.setAttribute('role', 'dialog'); back.setAttribute('aria-modal', 'true');
+      back.innerHTML = '<div class="fx-card">' + inner + '</div>'; document.body.appendChild(back);
+      fxOpen = back; fxPrevFocus = document.activeElement;
+      back.addEventListener('click', (e) => { if (e.target === back) closeFx(); });
+      if (confetti && settings.motion !== false && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        const cols = ['#fbbf24', '#4f7cff', '#22c55e', '#f472b6', '#a78bfa'];
+        for (let i = 0; i < 36; i++) { const c = document.createElement('i'); c.className = 'confetti'; c.style.left = Math.random() * 100 + '%'; c.style.background = cols[i % cols.length]; c.style.animationDelay = (Math.random() * 0.8) + 's'; c.style.animationDuration = (1.8 + Math.random() * 1.2) + 's'; back.appendChild(c); }
+      }
+      const pb = back.querySelector('[data-primary]'); if (pb) pb.focus();
+    }
+    function closeFx() {
+      if (!fxOpen) return; fxOpen.remove(); fxOpen = null;
+      try { if (fxPrevFocus && fxPrevFocus.isConnected) fxPrevFocus.focus(); } catch (e) {}
+      const n = fxQ.shift(); if (n) setTimeout(n, 250);
+    }
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && fxOpen) closeFx(); });
+    function showLevelUp(i) {
+      const L = LEVELS[i], nx = LEVELS[i + 1];
+      playLevelSound();
+      fxShow(`<div class="fx-emoji">${L.emoji}</div><h2>${t('Level {n}!', { n: i + 1 })}</h2>
+        <p class="fx-sub">${t('New title: {name}', { name: t(L.name) })}</p>
+        ${nx ? `<div class="fx-bar" aria-hidden="true"><i style="width:${Math.min(100, Math.round((stars - L.at) / (nx.at - L.at) * 100))}%"></i></div><p class="fx-sub">${t('{n} more stars to be a {name}.', { n: nx.at - stars, name: t(nx.name) })}</p>` : `<p class="fx-sub">${t('You reached the top level!')}</p>`}
+        <div class="fx-btns"><button class="btn lg" data-primary onclick="closeFx()">${t('Keep going')}</button></div>`, true);
+    }
+    let lessonStars = 0;
+    function showSummary(o) {
+      const earned = lessonStars; lessonStars = 0;
+      playDoneSound();
+      fxShow(`<div class="fx-emoji">🎉</div><h2>${o.title}</h2><p class="fx-sub">${t('Great job today!')}</p>
+        <div class="fx-rows"><div class="fx-row"><span>${o.icon}</span><span>${o.line}</span></div><div class="fx-row"><span>⭐</span><span>${t('{n} stars earned', { n: earned })}</span></div><div class="fx-row"><span>${LEVELS[levelFor(stars)].emoji}</span><span>${t('Level {n}', { n: levelFor(stars) + 1 })} · ${t(LEVELS[levelFor(stars)].name)}</span></div></div>
+        <div class="fx-btns">${o.next ? `<button class="btn lg" data-primary onclick="closeFx();showPage('${o.next.page}')">${o.next.label}</button>` : ''}<button class="btn light${o.next ? '' : ' lg'}"${o.next ? '' : ' data-primary'} onclick="closeFx();goHome()">${t('Back to Home')}</button></div>`, true);
+    }
+
     function addStar() {
-      stars++;
+      const before = levelFor(stars);
+      stars++; lessonStars++;
       document.getElementById('star-count').textContent = stars;
+      playStarSound(); bumpStreak(); refreshLevelUI();
+      if (levelFor(stars) > before && !settings.calm) fxEnqueue(() => showLevelUp(levelFor(stars)));
+    }
+
+    // ─── Read-it feedback: tick, star and progress for every word ───
+    let readDone = new Set();
+    function refreshReadUI() {
+      const total = words.length, n = readDone.size, isRead = readDone.has(rIdx);
+      const chip = document.getElementById('read-chip');
+      if (chip) chip.innerHTML = `<span class="chip-stars">⭐ ${stars} · </span>${t('{n} of {total} read', { n, total })}`;
+      const badge = document.getElementById('r-badge');
+      if (badge) { badge.hidden = !isRead; badge.querySelector('span').textContent = t('Read!'); }
+      document.querySelectorAll('#r-dots .word-dot').forEach((d, i) => { const on = readDone.has(i); d.classList.toggle('done', on); d.textContent = on ? '✓' : ''; });
+      const btn = document.getElementById('r-done');
+      if (btn) { btn.classList.toggle('is-read', isRead); btn.textContent = isRead ? t('Read ✓') : t('I read it ✓'); btn.setAttribute('aria-pressed', isRead ? 'true' : 'false'); }
+    }
+    function markRead() {
+      if (readDone.has(rIdx)) { refreshReadUI(); return; }
+      readDone.add(rIdx); addStar();
+      const anchor = document.getElementById('r-done') || document.getElementById('r-word'), b = anchor.getBoundingClientRect();
+      const pop = document.createElement('div'); pop.className = 'star-pop'; pop.textContent = '+1 ⭐'; pop.style.left = (b.left + b.width / 2 - 24) + 'px'; pop.style.top = (b.top - 6) + 'px';
+      document.body.appendChild(pop); setTimeout(() => pop.remove(), 1200);
+      refreshReadUI();
+      setHelp(t(readDone.size === words.length ? 'Well done! You read every word.' : 'Well done! +1 star'));
     }
 
 
@@ -3201,8 +3508,15 @@
     let tracePoints = [];
     const TRACE_FONT = (h) => `600 ${Math.round(h * 0.78)}px Lexend, Arial, sans-serif`;
 
-    function letterLayout(canvas) {
-      return { x: canvas.width / 2, y: canvas.height * 0.86, font: TRACE_FONT(canvas.height) };
+    // Centre each letter inside the board using its real size, so letters with a tail (p, g, q, y) are not cut off
+    let _measureCtx = null;
+    function letterLayout(canvas, letter) {
+      letter = letter || tracingLetters[tIdx].letter;
+      const font = TRACE_FONT(canvas.height);
+      _measureCtx = _measureCtx || document.createElement('canvas').getContext('2d');
+      _measureCtx.font = font;
+      const m = _measureCtx.measureText(letter), asc = m.actualBoundingBoxAscent || canvas.height * 0.5, desc = m.actualBoundingBoxDescent || 0;
+      return { x: canvas.width / 2, y: (canvas.height - (asc + desc)) / 2 + asc, font };
     }
 
     function drawGuide() {
@@ -3216,10 +3530,34 @@
       gx.font = L.font; gx.textAlign = 'center'; gx.textBaseline = 'alphabetic';
       gx.fillStyle = 'rgba(37,99,235,0.10)';
       gx.fillText(tracingLetters[tIdx].letter, L.x, L.y);
-      gx.setLineDash([12, 10]); gx.lineWidth = 4; gx.strokeStyle = 'rgba(37,99,235,0.75)';
-      gx.strokeText(tracingLetters[tIdx].letter, L.x, L.y);
+      // Dashed outline drawn from the finished shape, so the overlaps inside the font (where the stem meets the bowl) never show
+      const o = document.createElement('canvas'); o.width = g.width; o.height = g.height;
+      const ox = o.getContext('2d'); ox.font = L.font; ox.textAlign = 'center'; ox.textBaseline = 'alphabetic';
+      ox.lineJoin = 'round'; ox.lineWidth = 9; ox.strokeStyle = '#2563eb';
+      ox.strokeText(tracingLetters[tIdx].letter, L.x, L.y);
+      ox.globalCompositeOperation = 'destination-out';
+      ox.fillText(tracingLetters[tIdx].letter, L.x, L.y);
+      ox.globalCompositeOperation = 'destination-in';
+      const pat = document.createElement('canvas'); pat.width = 22; pat.height = 22;
+      const px = pat.getContext('2d'); px.strokeStyle = '#000'; px.lineWidth = 12;
+      [[-11, 11, 11, -11], [0, 22, 22, 0], [11, 33, 33, 11]].forEach(q => { px.beginPath(); px.moveTo(q[0], q[1]); px.lineTo(q[2], q[3]); px.stroke(); });
+      ox.fillStyle = ox.createPattern(pat, 'repeat'); ox.fillRect(0, 0, o.width, o.height);
+      gx.globalAlpha = 0.85; gx.drawImage(o, 0, 0); gx.globalAlpha = 1;
     }
 
+    let traceDone = new Set();
+    function refreshTraceUI() {
+      const box = document.getElementById('trace-progress'); if (!box) return;
+      box.innerHTML = `<span class="read-chip" style="margin-left:0"><span class="chip-stars">⭐ ${stars} · </span>${t('{n} of {total} traced', { n: traceDone.size, total: tracingLetters.length })}</span>` +
+        tracingLetters.map((l, i) => `<span class="trace-pill${traceDone.has(i) ? ' done' : i === tIdx ? ' now' : ''}" aria-label="${escapeHtml(l.letter)}${traceDone.has(i) ? ', ' + escapeHtml(t('Traced')) : ''}">${escapeHtml(l.letter)}${traceDone.has(i) ? ' ✓' : ''}</span>`).join('');
+    }
+    function traceSuccessBurst(earned) {
+      const board = document.querySelector('.trace-board'); if (!board) return;
+      board.classList.add('success'); setTimeout(() => board.classList.remove('success'), 1600);
+      const b = document.createElement('div'); b.className = 'trace-burst';
+      b.innerHTML = `<div class="big">${earned ? '⭐⭐' : '⭐'}</div><div class="txt">${earned ? '+2 ⭐' : t('Well done!')}</div>`;
+      board.appendChild(b); setTimeout(() => b.remove(), 1600);
+    }
     function updateTracing() {
       tracingLetters = content().tracing;
       const t = tracingLetters[tIdx];
@@ -3232,6 +3570,7 @@
       zoneCache = null;
       clearCanvas();
       setTraceFeedback('', '');
+      refreshTraceUI();
       drawGuide();
       if (document.fonts && document.fonts.load) document.fonts.load(TRACE_FONT(420)).then(drawGuide).catch(() => {});
     }
@@ -3240,7 +3579,7 @@
     let zoneCache = null;
     function onLetter(x, y) {
       const c = document.getElementById('traceCanvas');
-      const key = tracingLetters[tIdx].letter + c.width + 'x' + c.height;
+      const key = tracingLetters[tIdx].letter + c.width + 'x' + c.height + '@' + Math.round(letterLayout(c).y);
       if (!zoneCache || zoneCache.key !== key) {
         const m = document.createElement('canvas'); m.width = c.width; m.height = c.height;
         const mx = m.getContext('2d'); const L = letterLayout(m);
@@ -3366,26 +3705,36 @@
       return { drawn: true, inside, coverage: total ? covered / total : 0 };
     }
 
+    let traceTries = {};
+    function traceRetryFx() {
+      playRetrySound();
+      const b = document.querySelector('.trace-board');
+      if (b && settings.motion !== false) { b.classList.remove('shake'); void b.offsetWidth; b.classList.add('shake'); setTimeout(() => b.classList.remove('shake'), 500); }
+    }
     function checkTracing() {
       const t = tracingLetters[tIdx];
       const s = scoreTracing();
       const T = window.t;
-      if (!s.drawn) { setTraceFeedback(T('Trace over the dotted letter first.'), 'retry'); speakText(T('Trace over the dotted letter first.')); return; }
+      if (!s.drawn) { traceRetryFx(); setTraceFeedback(T('Trace over the dotted letter first.'), 'retry'); speakText(T('Trace over the dotted letter first.')); return; }
       if (s.inside < 0.7 || s.coverage < 0.6) {
         const tip = T(s.coverage < 0.6 ? 'Try to go over the whole letter.' : 'Try to stay on the dotted line.');
-        setTraceFeedback(T('Good try! {tip} Press Clear to try again.', { tip }), 'retry');
+        traceTries[tIdx] = (traceTries[tIdx] || 0) + 1; traceRetryFx();
+        setTraceFeedback(T('Good try! {tip} Press Clear to try again.', { tip }) + (traceTries[tIdx] >= 2 ? ' ' + T('Tip: tap Hear to listen, then follow the dashed line slowly.') : ''), 'retry');
         speakText(T('Good try! {tip}', { tip }));
         return;
       }
-      addStar(); addStar();
+      const first = !traceDone.has(tIdx);
+      traceTries[tIdx] = 0;
+      if (first) { addStar(); addStar(); traceDone.add(tIdx); }
+      refreshTraceUI(); traceSuccessBurst(first);
       if (tIdx < tracingLetters.length - 1) {
-        setTraceFeedback(T('Well done! That is {l}. You earned 2 stars.', { l: t.letter }), 'good');
+        setTraceFeedback(first ? T('Well done! That is {l}. You earned 2 stars.', { l: t.letter }) : T('Well done! That is {l}.', { l: t.letter }), 'good');
         speakText(T('Well done! That is {l}. Two stars!', { l: t.letter }));
         setTimeout(() => { tIdx++; updateTracing(); }, 1600);
       } else {
         setTraceFeedback(T('Well done! You traced all 4 letters.'), 'good');
         speakText(T('Well done! You traced all 4 letters.'));
-        setTimeout(() => { tIdx = 0; updateTracing(); goHome(); }, 1800);
+        const nL = tracingLetters.length; setTimeout(() => { tIdx = 0; traceDone = new Set(); traceTries = {}; updateTracing(); fxEnqueue(() => showSummary({ title: T('Tracing complete!'), icon: '✏️', line: T('{n} letters traced', { n: nL }), next: { page: 'reading', label: T('Read words next') } })); }, 1800);
       }
     }
 
@@ -3607,7 +3956,7 @@
           ? t('<b>"{title}"</b> is on {child}\'s Home screen. Only {child} sees it; it is not sent to the class.', { title: escapeHtml(note.title), child: CHILD_NAME })
           : t('<b>"{title}"</b> is on each child\'s Home screen. Parents see it on My child.', { title: escapeHtml(note.title) });
         document.getElementById('publish-preview-btn').onclick = () => openNote(note.id);
-        renderAllNotes();
+        renderAllNotes(); showSettingToast('Note sent ✓');
       }, 900);
     }
 
@@ -3637,6 +3986,7 @@
         <div class="note-row-main">
           <div class="note-row-title">${escapeHtml(n.title)}</div>
           <div class="note-row-meta">${t('From {from} to {to} · sent {when}', { from: escapeHtml(n.from), to: escapeHtml(t(n.sentTo)), when: whenText(n.sentAt) })}</div>
+          ${n.words && n.words.length ? `<div class="shelf-pics thumbs">${thumbImgs(n.words, 4)}</div>` : ''}
           ${actions.status ? '<div style="margin-top:4px">' + status + '</div>' : ''}
         </div>
         <div class="note-row-actions">
@@ -3667,6 +4017,7 @@
         card.hidden = false;
         document.getElementById('home-new-note-from').textContent = fresh.fromRole === 'parent' ? t('New from {from}', { from: fresh.from }) : t('New from your teacher');
         document.getElementById('home-new-note-title').textContent = fresh.title;
+        document.getElementById('home-new-note-pics').innerHTML = thumbImgs(fresh.words, 4);
         document.getElementById('home-new-note-btn').onclick = () => openNote(fresh.id);
       } else card.hidden = true;
       const rest = list.filter(n => n !== fresh);
@@ -3785,7 +4136,7 @@
         const badge = l.status === 'Done' ? 'green' : l.status === 'This week' ? 'orange' : 'blue';
         return `<div class="cur-card"><button type="button" class="cur-head" aria-expanded="${open}" onclick="openLesson = openLesson === '${l.id}' ? null : '${l.id}'; renderCurriculum()">
           <span class="ttl">${escapeHtml(l.custom ? l.title : t(l.title))}<span class="sub">${t(l.skill)} · ${t('About {n} minutes', { n: l.min })}</span></span>${assigned ? `<span class="badge green">${t('Assigned')}</span>` : ''}<span class="badge ${badge}">${t(l.custom ? 'Your lesson' : l.status)}</span><span aria-hidden="true">${open ? '▴' : '▾'}</span></button>
-          ${open ? `<div class="cur-body"><div class="tt-note">${t('Words')}</div>${words.map(sylWord).join('')}<div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:8px">
+          ${open ? `<div class="cur-body"><div class="tt-note">${t('Words')}</div><div class="shelf-pics thumbs" style="margin-bottom:10px">${thumbImgs(words, 6)}</div>${words.map(sylWord).join('')}<div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:8px">
             ${l.open ? `<button type="button" class="btn sm" onclick="${l.set ? `chooseLessonSet('${l.set}', true)` : `showPage('${l.open}')`}">${t('Open lesson')}</button>` : ''}
             <button type="button" class="btn sm ${assigned ? 'outline' : ''}" onclick="toggleAssign('${l.id}')">${assigned ? t('Remove assignment') : t('Assign to {cls}', { cls: t('Class ' + curClass()) })}</button></div></div>` : ''}</div>`;
       }).join('');
@@ -3795,6 +4146,7 @@
       if (as.find(a => a.id === id && a.cls === cls)) as = as.filter(a => !(a.id === id && a.cls === cls));
       else { const d = new Date(); d.setDate(d.getDate() + 7); as.push({ id, cls, due: d.toISOString() }); }
       jset(ASSIGN_KEY, as); renderCurriculum(); renderAssign();
+      showSettingToast(as.find(a => a.id === id && a.cls === cls) ? 'Lesson assigned ✓' : 'Assignment removed');
     }
 
     // Lesson builder
@@ -3809,7 +4161,7 @@
       if (!title || words.length < 2) { st.textContent = t('Add a title and at least two words.'); return; }
       const ls = jget(LESSON_KEY, '[]'); ls.push({ id: 'c' + Date.now(), title, words, level: document.getElementById('lb-level').value }); jset(LESSON_KEY, ls);
       document.getElementById('lb-title').value = ''; document.getElementById('lb-words').value = ''; renderBuilderPreview();
-      st.textContent = t('Added to the curriculum.'); renderCurriculum();
+      st.textContent = t('Added to the curriculum.'); renderCurriculum(); showSettingToast('Lesson added ✓');
     }
 
     // Assignments
@@ -3869,7 +4221,7 @@
       const text = box.value.trim();
       if (!text) { st.textContent = t('Write a message first.'); box.focus(); return; }
       const list = loadFeedback(); { const at = new Date().toISOString(); list.unshift({ id: 'f' + Date.now(), text, student, at }); } jset(FB_KEY, list.slice(0, 30));
-      box.value = ''; st.textContent = t('Sent to the parent of {name}.', { name: student }); renderFeedbackForm();
+      box.value = ''; st.textContent = t('Sent to the parent of {name}.', { name: student }); renderFeedbackForm(); showSettingToast('Message sent ✓'); updateParentBadge();
     }
 
 
@@ -3896,10 +4248,12 @@
       if (!text) { inp.focus(); return; }
       const list = loadReplies(); list.push({ id: 'r' + Date.now(), to: id, from: role, text, at: new Date().toISOString(), readT: role === 'teacher' }); jset(REPLY_KEY, list.slice(-60));
       if (role === 'parent') { renderParentThread(); renderTeacherDash(); } else { renderFeedbackForm(); renderParentThread(); }
+      showSettingToast('Reply sent ✓'); updateParentBadge();
     }
     function renderParentThread() {
       const box = document.getElementById('parent-fb-card'); if (!box) return;
-      box.innerHTML = `<h3>${t('From the teacher')}</h3>` + threadsFor(CHILD_NAME).map(m => threadHtml(m, 'parent')).join('');
+      const nNew = parentUnseenIds().length;
+      box.innerHTML = `<h3>${t('From the teacher')}${nNew ? `<span class="new-pill">${t('{n} new', { n: nNew })}</span>` : ''}</h3>` + threadsFor(CHILD_NAME).map(m => threadHtml(m, 'parent')).join('');
     }
     function unreadParentReplies() { return loadReplies().filter(r => r.from === 'parent' && !r.readT); }
     function updateFbBadge() {
@@ -3907,6 +4261,18 @@
       if (b) { b.hidden = n === 0; b.textContent = n; }
       const box = document.getElementById('teacher-reply-notice');
       if (box) { box.hidden = n === 0; if (n) document.getElementById('teacher-reply-summary').textContent = t('{n} new reply from parents. Latest: "{text}"', { n, text: unreadParentReplies().slice(-1)[0].text }); }
+    }
+    const PSEEN_KEY = 'dla-pseen';
+    function parentUnseenIds() {
+      const seen = jget(PSEEN_KEY, '[]'), reps = loadReplies(), ids = [];
+      threadsFor(CHILD_NAME).forEach(m => { ids.push(m.id); reps.filter(r => r.to === m.id && r.from === 'teacher').forEach(r => ids.push(r.id)); });
+      return ids.filter(i => !seen.includes(i));
+    }
+    function updateParentBadge() { const n = parentUnseenIds().length, b = document.getElementById('parent-badge'); if (b) { b.hidden = n === 0; b.textContent = n; } }
+    function markParentSeen() {
+      const seen = jget(PSEEN_KEY, '[]'), reps = loadReplies(), all = [];
+      threadsFor(CHILD_NAME).forEach(m => { all.push(m.id); reps.filter(r => r.to === m.id && r.from === 'teacher').forEach(r => all.push(r.id)); });
+      jset(PSEEN_KEY, Array.from(new Set(seen.concat(all))).slice(-200));
     }
     function markRepliesRead() { const l = loadReplies(); l.forEach(r => { if (r.from === 'parent') r.readT = true; }); jset(REPLY_KEY, l); }
 
@@ -4047,7 +4413,7 @@
     // ─── Settings (saved on this device) ───
     const SETTINGS_KEY = 'dla-settings';
     const DEFAULT_SETTINGS = { lang: LANG, font: 'Lexend', size: 'medium', spacing: '1.6', theme: '', speed: 'normal',
-                               highlight: true, tapword: true, autopicture: false, calm: false, bigbuttons: false, motion: true };
+                               highlight: true, sound: true, tapword: true, autopicture: false, calm: false, bigbuttons: false, motion: true };
     let settings = Object.assign({}, DEFAULT_SETTINGS);
     try { Object.assign(settings, JSON.parse(localStorage.getItem(SETTINGS_KEY) || '{}')); } catch (e) {}
 
@@ -4166,7 +4532,7 @@
       settings.lang = LANG; saveSettings();
       document.documentElement.lang = LANG;
       document.title = 'Dyslexia Literacy AI';
-      translateStatic();
+      translateStatic(); refreshDynamicLabels();
       document.querySelectorAll('.lang-switch button').forEach(b => { const on = b.dataset.lang === LANG; b.classList.toggle('active', on); b.setAttribute('aria-pressed', on ? 'true' : 'false'); });
       const sel = document.getElementById('setting-lang-select'); if (sel) sel.value = LANG;
       const nm = document.getElementById('sidebar-name'); if (nm.dataset.person) setSidebarName(nm.dataset.person, nm.dataset.role);
