@@ -960,6 +960,48 @@
     .hv-prog-t b { font-size:1.1rem; } .hv-prog-t em { font-style:normal; font-size:.75rem; color:var(--muted); font-weight:600; }
     @media (max-width:900px) { .hv-stage { height:560px; max-width:380px; } .hv-main { width:270px; } .hv-picto { width:120px; height:120px; } .hv-badge { right:-4px; top:-8px; padding:6px 12px; } .hv-badge span { font-size:1.2rem; } .hv-trace { left:-4px; } .hv-prog { right:-4px; } }
     @media (prefers-reduced-motion: reduce) { .hv-trace, .hv-badge, .hv-prog { animation:none; } }
+    /* ── Pressable "3D" buttons: a solid darker edge underneath that sinks when pressed ── */
+    .btn:not(.ghost):not(.sm) { --edge:#1e40af; box-shadow:0 5px 0 var(--edge); transition:transform .08s ease-out, box-shadow .08s ease-out, background .15s; }
+    .btn.green { --edge:#15803d; } .btn.purple { --edge:#6d28d9; } .btn.orange { --edge:#c2410c; } .btn.coral { --edge:#dc2626; }
+    .btn.reward { --edge:#b45309; }
+    .btn.light:not(.sm), .btn.outline:not(.sm) { --edge:#c7d2e8; }
+    .btn.outline:not(.sm) { --edge:#9db7f5; }
+    .btn.sm:not(.ghost) { box-shadow:0 3px 0 var(--edge, #1e40af); }
+    .btn.light.sm { --edge:#c7d2e8; } .btn.outline.sm { --edge:#9db7f5; } .btn.reward.sm { --edge:#b45309; }
+    .btn:not(.ghost):hover:not(:disabled) { transform:translateY(-1px); box-shadow:0 6px 0 var(--edge, #1e40af); }
+    .btn:not(.ghost):active:not(:disabled) { transform:translateY(4px); box-shadow:0 1px 0 var(--edge, #1e40af); }
+    .btn.sm:not(.ghost):active:not(:disabled) { transform:translateY(2px); box-shadow:0 1px 0 var(--edge, #1e40af); }
+    .btn:disabled { box-shadow:0 3px 0 rgba(15,23,42,.12); }
+    .btn:not(.ghost):focus-visible { outline:3px solid #fbbf24; outline-offset:3px; }
+    .btn.reward.is-read { --edge:#86efac; }
+    body.calm .btn, .btn.calm-flat { transition:none; }
+    body.calm .btn:not(.ghost):hover:not(:disabled), body.calm .btn:not(.ghost):active:not(:disabled) { transform:none; }
+    @media (prefers-reduced-motion: reduce) { .btn { transition:none !important; } .btn:not(.ghost):hover:not(:disabled), .btn:not(.ghost):active:not(:disabled) { transform:none; } }
+    .bell-btn { position:absolute; top:22px; right:14px; width:44px; height:44px; border-radius:14px; border:0; background:rgba(255,255,255,.1); color:#fff; display:grid; place-items:center; cursor:pointer; z-index:5; }
+    .bell-btn:hover { background:rgba(255,255,255,.2); }
+    .bell-btn:focus-visible { outline:3px solid #fbbf24; outline-offset:2px; }
+    .bell-btn .ico { width:22px; height:22px; }
+    .bell-badge { position:absolute; top:-5px; right:-5px; min-width:20px; height:20px; padding:0 5px; border-radius:999px; background:#ef4444; color:#fff; font:800 .75rem/20px var(--font); text-align:center; border:2px solid var(--sidebar-bg); }
+    .bell-btn.ring { animation:bellring .9s ease-in-out 2; }
+    @keyframes bellring { 0%,100%{transform:rotate(0)} 20%{transform:rotate(14deg)} 40%{transform:rotate(-12deg)} 60%{transform:rotate(8deg)} 80%{transform:rotate(-5deg)} }
+    .bell-panel { position:fixed; left:236px; top:14px; width:360px; max-width:calc(100vw - 20px); max-height:70vh; overflow:auto; background:var(--surface); color:var(--ink); border:1px solid var(--line); border-radius:20px; box-shadow:0 20px 50px rgba(15,23,42,.28); z-index:99990; }
+    .bell-head { display:flex; justify-content:space-between; align-items:center; padding:14px 16px 8px; font-weight:800; }
+    .bell-head button { border:0; background:transparent; font-size:1.2rem; cursor:pointer; color:var(--muted); min-width:36px; min-height:36px; }
+    .bell-item { display:flex; gap:12px; width:100%; text-align:left; padding:12px 16px; border:0; border-top:1px solid var(--line); background:transparent; cursor:pointer; font:inherit; color:inherit; }
+    .bell-item:hover { background:var(--soft); }
+    .bell-item.new { background:var(--blue-light); }
+    .bell-item .bi-ico { font-size:1.4rem; line-height:1.2; }
+    .bell-item b { display:block; font-size:.9375rem; }
+    .bell-item span.sub { display:block; color:var(--ink2); font-size:.8125rem; margin-top:2px; overflow:hidden; text-overflow:ellipsis; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; }
+    .bell-item small { color:var(--muted); font-size:.75rem; }
+    .bell-empty { padding:24px 16px 28px; text-align:center; color:var(--ink2); font-weight:700; }
+    .sample-note { background:var(--yellow-light); border:1px solid #fcd34d; color:#78350f; border-radius:12px; padding:8px 14px; font-size:.8125rem; font-weight:600; margin-bottom:14px; }
+    .privacy-card { margin-top:18px; background:var(--surface); border:1px solid var(--line); border-radius:18px; padding:16px 18px; color:var(--ink2); font-size:.875rem; line-height:1.55; }
+    .privacy-card b { color:var(--ink); }
+    .hero-privacy { margin-top:14px; font-size:.8125rem; color:var(--muted); }
+    @media (max-width:1024px) { .sidebar { position:relative; } .bell-btn { top:14px; } }
+    @media (max-width:768px) { .bell-btn { position:fixed; top:10px; right:10px; background:var(--sidebar-bg); box-shadow:0 4px 12px rgba(0,0,0,.25); } .bell-btn:hover { background:var(--sidebar-bg); } .app-main { padding-top:62px !important; } .bell-panel { left:10px; right:10px; top:62px; width:auto; max-width:none; } }
+    @media (prefers-reduced-motion: reduce) { .bell-btn.ring { animation:none; } }
     .shelf-pics.thumbs { margin-top:6px; }
     .shelf-pics.thumbs:not(:has(img:not([hidden]))) { display:none; }
     .note-row .shelf-pics img, .cur-body .shelf-pics img { width:40px; height:40px; object-fit:contain; background:#fff; }
@@ -1102,6 +1144,7 @@
   <symbol id="i-logout" viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="m16 17 5-5-5-5"/><path d="M21 12H9"/></symbol>
   <symbol id="i-sparkles" viewBox="0 0 24 24"><path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3Z"/></symbol>
   <symbol id="i-help" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9.1 9a3 3 0 0 1 5.8 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></symbol>
+  <symbol id="i-bell" viewBox="0 0 24 24"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></symbol>
   <symbol id="i-mic" viewBox="0 0 24 24"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><path d="M12 19v3"/></symbol>
   <symbol id="i-users" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.9"/><path d="M16 3.1a4 4 0 0 1 0 7.8"/></symbol>
   <symbol id="i-eye" viewBox="0 0 24 24"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></symbol>
@@ -1258,6 +1301,7 @@
             </div>
             <div class="form-row" style="margin-bottom:20px">
               <label class="checkbox-label"><input type="checkbox" checked /> Remember me</label>
+              <button type="button" class="text-link" onclick="forgotPassword()">Forgot password?</button>
             </div>
             <p style="font-size:0.8125rem;color:var(--muted);margin:-8px 0 16px">Prototype: any details will sign you in.</p>
             <button type="button" class="btn full lg" id="login-submit-btn" onclick="handleLoginSubmit()">Sign in as Student</button>
@@ -1444,6 +1488,7 @@
     <div class="app-frame">
       <!-- Sidebar -->
       <aside class="sidebar" aria-label="App navigation">
+        <button class="bell-btn" id="bell-btn" onclick="toggleBell(event)" aria-haspopup="dialog" aria-expanded="false" aria-label="Notifications"><svg class="ico" aria-hidden="true"><use href="#i-bell"/></svg><span class="bell-badge" id="bell-badge" hidden></span></button>
         <button class="side-brand" onclick="showScreen('landing')" aria-label="Dyslexia Literacy AI home">
           <span class="brand-mark"><svg class="ico" aria-hidden="true"><use href="#i-book"/></svg></span>
           <span class="side-brand-text">Dyslexia<br>Literacy AI</span>
@@ -1459,7 +1504,7 @@
           <button class="nav-item" data-page="parent" data-role="parent" onclick="showPage('parent')"><svg class="ico" aria-hidden="true"><use href="#i-heart"/></svg><span class="nav-label">My child</span><span class="nav-badge" id="parent-badge" hidden data-i18n-skip></span></button>
           <button class="nav-item" data-page="reading" data-role="student,parent" onclick="showPage('reading')" style="position:relative"><svg class="ico" aria-hidden="true"><use href="#i-book"/></svg><span class="nav-label">Today's lesson</span><span id="sidebar-new-badge" style="display:none;position:absolute;right:12px;top:50%;transform:translateY(-50%);background:#dc2626;color:#fff;font-size:0.625rem;font-weight:800;padding:2px 6px;border-radius:20px">NEW</span></button>
           <button class="nav-item" data-page="tracing" data-role="student" onclick="showPage('tracing')"><svg class="ico" aria-hidden="true"><use href="#i-pencil"/></svg><span class="nav-label">Trace letters</span></button>
-          <button class="nav-item" data-page="notes" data-role="teacher,parent" onclick="showPage('notes')"><svg class="ico" aria-hidden="true"><use href="#i-notes"/></svg><span class="nav-label">Simplify notes</span></button>
+          <button class="nav-item" data-page="notes" data-role="teacher,parent" onclick="showPage('notes')"><svg class="ico" aria-hidden="true"><use href="#i-notes"/></svg><span class="nav-label">Simplify notes</span><span class="nav-badge" id="notes-badge" hidden data-i18n-skip></span></button>
           <button class="nav-item" data-page="settings" data-role="all" onclick="showPage('settings')"><svg class="ico" aria-hidden="true"><use href="#i-sliders"/></svg><span class="nav-label">Settings</span></button>
         </nav>
         <div class="nav-sep"></div>
@@ -2012,6 +2057,7 @@
 
 <!-- 8. TEACHER DASHBOARD -->
         <div id="page-teacher" class="page-content app-section" style="display:none">
+          <div class="sample-note" role="note">ℹ️ Sample data: the class numbers on this dashboard are made up for this prototype.</div>
           <div class="teacher-header">
             <div class="teacher-header-left"><h2>Dashboard</h2><p>Overview of your students' progress.</p></div>
             <div class="teacher-controls">
@@ -2525,6 +2571,14 @@
       'Say the word': 'Sebut perkataan', 'Listening… tap to stop': 'Mendengar… tekan untuk berhenti', 'Tap the microphone and read the word out loud.': 'Tekan mikrofon dan baca perkataan dengan kuat.',
       'Great reading! You said "{w}".': 'Bacaan yang bagus! Kamu sebut "{w}".', 'I heard "{heard}". Try again, you can do it!': 'Saya dengar "{heard}". Cuba lagi, kamu boleh!', 'Please allow the microphone to read out loud.': 'Sila benarkan mikrofon untuk membaca dengan kuat.', 'I did not hear anything. Try again.': 'Saya tidak dengar apa-apa. Cuba lagi.',
       'Reply sent ✓': 'Balasan dihantar ✓', 'Lesson assigned ✓': 'Pelajaran ditugaskan ✓', 'Assignment removed': 'Tugasan dibuang', 'Lesson added ✓': 'Pelajaran ditambah ✓', 'Message sent ✓': 'Mesej dihantar ✓', 'Note sent ✓': 'Nota dihantar ✓', '{n} new': '{n} baharu',
+"Notifications": 'Pemberitahuan', 'Notifications, {n} new': 'Pemberitahuan, {n} baharu', 'Close': 'Tutup', 'You are all caught up ✓': 'Semua sudah dibaca ✓',
+      'New note: {title}': 'Nota baharu: {title}', 'From {from}': 'Daripada {from}', 'Message from your teacher': 'Mesej daripada cikgu', 'Your teacher replied': 'Cikgu telah membalas', 'A parent replied': 'Seorang ibu bapa membalas', '{who} opened "{title}"': '{who} membuka "{title}"', 'A parent': 'Seorang ibu bapa',
+      '🔔 You have {n} new notifications': '🔔 Kamu ada {n} pemberitahuan baharu',
+      'Tap to hear': 'Tekan untuk dengar', 'Tap any word or letter and the app says it out loud.': 'Tekan mana-mana perkataan atau huruf dan aplikasi akan menyebutnya.', 'Trace the letter': 'Surih huruf', 'Follow the dashed line with your finger. Stay on the line!': 'Ikut garisan putus-putus dengan jari kamu. Kekal di atas garisan!', 'Earn stars': 'Kumpul bintang', 'Every word you read and every letter you trace gives you stars. Collect them to reach new levels!': 'Setiap perkataan yang kamu baca dan setiap huruf yang kamu surih memberi bintang. Kumpulkan untuk naik tahap!', "Let's start!": 'Jom mula!', 'Next': 'Seterusnya', 'Skip': 'Langkau',
+      'Forgot password?': 'Lupa kata laluan?', 'Forgot your password?': 'Lupa kata laluan?', 'In the full version, we send a reset link to your email, or your teacher can reset it for you. This prototype has no real passwords, so just tap Sign in.': 'Dalam versi penuh, kami hantar pautan set semula ke e-mel anda, atau cikgu boleh menetapkannya semula. Prototaip ini tiada kata laluan sebenar, jadi tekan Log masuk sahaja.', 'OK, got it': 'OK, faham',
+      'You are offline. Built-in pictures and the voice still work.': 'Tiada internet. Gambar dalam aplikasi dan suara masih berfungsi.', 'Back online ✓': 'Kembali dalam talian ✓',
+      'ℹ️ Sample data: the class numbers on this dashboard are made up for this prototype.': 'ℹ️ Data contoh: nombor kelas pada papan pemuka ini direka untuk prototaip ini.',
+      'Privacy': 'Privasi', 'This prototype keeps everything on this device only. Nothing is sent to a server, and there are no real accounts. A school version would add parent consent, encrypted storage and a clear way to delete a child’s data.': 'Prototaip ini menyimpan semua data pada peranti ini sahaja. Tiada apa dihantar ke pelayan dan tiada akaun sebenar. Versi sekolah akan menambah kebenaran ibu bapa, storan disulitkan dan cara jelas untuk memadam data kanak-kanak.', 'Read by the family': 'Dibaca oleh keluarga', 'Prototype: all data stays on this device.': 'Prototaip: semua data kekal pada peranti ini.',
       // Teacher dashboard
       'You': 'Anda', 'Reply': 'Balas', 'Write a reply': 'Tulis balasan', 'Parent of {name}': 'Ibu bapa {name}',
       'New reply from a parent': 'Balasan baharu daripada ibu bapa', 'Read reply': 'Baca balasan',
@@ -2720,7 +2774,7 @@
 
     // ─── Swap static page text between English and Malay ───
     const ATTRS = ['placeholder', 'aria-label', 'title', 'alt'];
-    function refreshDynamicLabels() { try { refreshStreakUI(); refreshLevelUI(); updateParentBadge(); } catch (e) {} }
+    function refreshDynamicLabels() { try { refreshStreakUI(); refreshLevelUI(); updateParentBadge(); refreshBell(); } catch (e) {} }
     function translateStatic(root) {
       const w = document.createTreeWalker(root || document.body, NodeFilter.SHOW_TEXT);
       let n;
@@ -2781,7 +2835,7 @@
       if (name === 'parent') renderParent();
       if (name === 'teacher') { renderTeacherDash(); teacherTab('overview'); }
       if (name === 'notes') showNotesLibrary();
-      try { updateParentBadge(); if (name === 'dashboard') { refreshStreakUI(); refreshLevelUI(); } } catch (e) {}
+      try { updateParentBadge(); refreshBell(); if (name === 'dashboard') { refreshStreakUI(); refreshLevelUI(); } } catch (e) {}
     }
 
 
@@ -3289,6 +3343,90 @@
     let audioManifest = { ms: new Set(), en: new Set() }, activeClip = null;
     fetch('audio/manifest.json').then(r => r.ok ? r.json() : null).then(m => { if (m) audioManifest = { ms: new Set(m.ms || []), en: new Set(m.en || []) }; }).catch(() => {});
     function stopSpeech() { try { window.speechSynthesis.cancel(); } catch (e) {} if (activeClip) { activeClip.pause(); activeClip = null; } clearSentenceHL(); hideAudioWave(); }
+
+    // ─── Notifications: a bell with a list of what is new for each role, plus a hello message when you sign in ───
+    // Everything is kept in this browser, so it only works on one device. A real version would send email or phone alerts.
+    let bellItems = [];
+    function computeNotifs() {
+      const role = currentLoginRole, out = [], reps = loadReplies();
+      const time = (x) => x.at ? new Date(x.at).getTime() : 0;
+      if (role === 'student' || role === 'parent') {
+        loadNotes().filter(n => !n.openedAt && (role === 'student' || n.fromRole === 'teacher')).forEach(n =>
+          out.push({ id: 'n:' + n.id, icon: '📄', title: t('New note: {title}', { title: n.title }), sub: t('From {from}', { from: n.from }), at: n.sentAt, act: () => (role === 'student' ? openNote(n.id) : showPage('notes')) }));
+      }
+      if (role === 'parent') {
+        threadsFor(CHILD_NAME).forEach(m => {
+          out.push({ id: 'f:' + m.id, icon: '💬', title: t('Message from your teacher'), sub: m.text, at: m.at, act: () => showPage('parent') });
+          reps.filter(r => r.to === m.id && r.from === 'teacher').forEach(r => out.push({ id: 'r:' + r.id, icon: '↩️', title: t('Your teacher replied'), sub: r.text, at: r.at, act: () => showPage('parent') }));
+        });
+      }
+      if (role === 'teacher') {
+        reps.filter(r => r.from === 'parent').forEach(r => out.push({ id: 'r:' + r.id, icon: '💬', title: t('A parent replied'), sub: r.text, at: r.at, act: () => { showPage('teacher'); teacherTab('feedback'); } }));
+        loadNotes().filter(n => n.fromRole === 'teacher' && n.openedAt).forEach(n => out.push({ id: 'o:' + n.id, icon: '👀', title: t('{who} opened "{title}"', { who: n.openedWith === 'parent' ? t('A parent') : CHILD_NAME, title: n.title }), sub: t('Read by the family'), at: n.openedAt, act: () => showPage('notes') }));
+      }
+      return out.sort((a, b) => time(b) - time(a)).slice(0, 10);
+    }
+    const notifSeenKey = () => 'dla-nseen-' + currentLoginRole;
+    function unseenNotifs() { const seen = jget(notifSeenKey(), '[]'); return computeNotifs().filter(n => !seen.includes(n.id)); }
+    function refreshBell() {
+      try {
+        const n = unseenNotifs().length, b = document.getElementById('bell-badge'), btn = document.getElementById('bell-btn');
+        if (b) { b.hidden = n === 0; b.textContent = n; }
+        if (btn) btn.setAttribute('aria-label', n ? t('Notifications, {n} new', { n }) : t('Notifications'));
+        const nb = document.getElementById('notes-badge');
+        if (nb) { const c = currentLoginRole === 'parent' ? loadNotes().filter(x => !x.openedAt && x.fromRole === 'teacher').length : 0; nb.hidden = c === 0; nb.textContent = c; }
+      } catch (e) {}
+    }
+    function closeBell() { const p = document.getElementById('bell-panel'); if (p) p.remove(); const b = document.getElementById('bell-btn'); if (b) b.setAttribute('aria-expanded', 'false'); }
+    function toggleBell(ev) {
+      if (ev) ev.stopPropagation();
+      if (document.getElementById('bell-panel')) { closeBell(); return; }
+      const seen = jget(notifSeenKey(), '[]'); bellItems = computeNotifs();
+      const p = document.createElement('div'); p.id = 'bell-panel'; p.className = 'bell-panel'; p.setAttribute('role', 'dialog'); p.setAttribute('aria-label', t('Notifications'));
+      p.innerHTML = `<div class="bell-head"><span>${t('Notifications')}</span><button type="button" onclick="closeBell()" aria-label="${t('Close')}">✕</button></div>` +
+        (bellItems.length ? bellItems.map((n, i) => `<button type="button" class="bell-item${seen.includes(n.id) ? '' : ' new'}" onclick="bellGo(${i})"><span class="bi-ico" aria-hidden="true">${n.icon}</span><span><b>${escapeHtml(n.title)}</b><span class="sub">${escapeHtml(n.sub || '')}</span>${n.at ? `<small>${whenText(n.at)}</small>` : ''}</span></button>`).join('') : `<div class="bell-empty">${t('You are all caught up ✓')}</div>`);
+      document.body.appendChild(p); document.getElementById('bell-btn').setAttribute('aria-expanded', 'true');
+      jset(notifSeenKey(), Array.from(new Set(seen.concat(bellItems.map(n => n.id)))).slice(-200)); refreshBell();
+      const f = p.querySelector('.bell-item') || p.querySelector('.bell-head button'); if (f) f.focus();
+    }
+    function bellGo(i) { const n = bellItems[i]; closeBell(); if (n && n.act) n.act(); }
+    document.addEventListener('click', (e) => { const p = document.getElementById('bell-panel'); if (p && !p.contains(e.target) && !e.target.closest('#bell-btn')) closeBell(); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeBell(); });
+    function announceNew() {
+      refreshBell();
+      const n = unseenNotifs().length; if (!n || fxOpen) return;
+      const btn = document.getElementById('bell-btn'); if (btn && !settings.calm && settings.motion !== false) btn.classList.add('ring'), setTimeout(() => btn.classList.remove('ring'), 2000);
+      showSettingToast(t('🔔 You have {n} new notifications', { n }));
+    }
+
+    // ─── First-time walkthrough for a new student ───
+    function showTour(i) {
+      const steps = [
+        { e: '👆', h: 'Tap to hear', p: 'Tap any word or letter and the app says it out loud.' },
+        { e: '✏️', h: 'Trace the letter', p: 'Follow the dashed line with your finger. Stay on the line!' },
+        { e: '⭐', h: 'Earn stars', p: 'Every word you read and every letter you trace gives you stars. Collect them to reach new levels!' } ];
+      const st = steps[i], last = i === steps.length - 1;
+      if (fxOpen) closeFx();
+      fxShow(`<div class="fx-emoji">${st.e}</div><h2>${t(st.h)}</h2><p class="fx-sub">${t(st.p)}</p>
+        <div class="fx-bar" aria-hidden="true"><i style="width:${Math.round((i + 1) / steps.length * 100)}%"></i></div>
+        <div class="fx-btns"><button class="btn lg" data-primary onclick="${last ? 'closeFx()' : 'showTour(' + (i + 1) + ')'}">${t(last ? "Let's start!" : 'Next')}</button>${last ? '' : `<button class="btn ghost" onclick="closeFx()">${t('Skip')}</button>`}</div>`, last);
+      try { localStorage.setItem('dla-tour', '1'); } catch (e) {}
+    }
+    function forgotPassword() {
+      fxShow(`<div class="fx-emoji">🔑</div><h2>${t('Forgot your password?')}</h2><p class="fx-sub">${t('In the full version, we send a reset link to your email, or your teacher can reset it for you. This prototype has no real passwords, so just tap Sign in.')}</p><div class="fx-btns"><button class="btn lg" data-primary onclick="closeFx()">${t('OK, got it')}</button></div>`);
+    }
+    function afterEnterApp() {
+      refreshBell();
+      let seenTour = false; try { seenTour = !!localStorage.getItem('dla-tour'); } catch (e) {}
+      setTimeout(() => { if (currentLoginRole === 'student' && !seenTour) showTour(0); else announceNew(); }, 700);
+    }
+    { const _hl = handleLoginSubmit; handleLoginSubmit = function () { _hl.apply(this, arguments); afterEnterApp(); }; }
+    { const _hs = handleSignupSubmit; handleSignupSubmit = function () { _hs.apply(this, arguments); afterEnterApp(); }; }
+    window.addEventListener('offline', () => showSettingToast(t('You are offline. Built-in pictures and the voice still work.')));
+    window.addEventListener('online', () => showSettingToast(t('Back online ✓')));
+    // Privacy notes
+    document.getElementById('page-settings').insertAdjacentHTML('beforeend', `<div class="privacy-card"><b>🔒 ${t('Privacy')}</b><br>${t('This prototype keeps everything on this device only. Nothing is sent to a server, and there are no real accounts. A school version would add parent consent, encrypted storage and a clear way to delete a child’s data.')}</div>`);
+    { const hc = document.querySelector('.hero-content'); if (hc) hc.insertAdjacentHTML('beforeend', `<p class="hero-privacy">🔒 ${t('Prototype: all data stays on this device.')}</p>`); }
     let hlTimers = [];
     function clearSentenceHL() { hlTimers.forEach(clearTimeout); hlTimers = []; const el = document.getElementById('r-sentence'); if (el && el.dataset.plain) { el.textContent = el.dataset.plain; delete el.dataset.plain; } }
     function highlightSentence(text, rate) {
